@@ -16,8 +16,6 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		
 		call.on('stream', function(stream) {
 				v.srcObject = stream
-			// `stream` is the MediaStream of the remote peer.
-			// Here you'd add it to an HTML video/canvas element.
 		});
 	});
 });
