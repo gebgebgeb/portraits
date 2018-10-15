@@ -14,7 +14,7 @@ peer.on('call', function(call) {
 	call.on('stream', function(stream) {
   	// `stream` is the MediaStream of the remote peer.
   		v.srcObject = stream
-  		console.log('in call.on')
+  		console.log(stream.getVideoTracks())
   	// Here you'd add it to an HTML video/canvas element.
 	});
 });
