@@ -1,4 +1,4 @@
-var peer = new Peer({key: 'lwjd5qra8257b9', id:'a'});
+var peer = new Peer('a', {key: 'peerjs', port:9000, host:'localhost', debug:3});
 
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
