@@ -6,14 +6,18 @@ peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
 });
 
-peer.on('call', function(call) {
-	// Answer the call, providing our mediaStream
-	call.answer();
-	
-	call.on('stream', function(stream) {
-  		v.srcObject = stream
-  	// `stream` is the MediaStream of the remote peer.
-  	// Here you'd add it to an HTML video/canvas element.
+
+
+navigator.mediaDevices.getUserMedia({video:true, audio:false})
+.then(function(mediaStream) {
+	peer.on('call', function(call) {
+		// Answer the call, providing our mediaStream
+		call.answer(mediaStream);
+		
+		call.on('stream', function(stream) {
+				v.srcObject = stream
+			// `stream` is the MediaStream of the remote peer.
+			// Here you'd add it to an HTML video/canvas element.
+		});
 	});
 });
-
