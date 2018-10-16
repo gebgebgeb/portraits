@@ -28,7 +28,9 @@ let c = document.getElementById('canvas');
 c.addEventListener('mousedown', mouseDownListener)
 c.addEventListener('mouseup', mouseUpListener)
 c.addEventListener('mousemove', mouseMoveListener)
-
+let ctx = c.getContext('2d');
+ctx.fillStyle="white"
+ctx.fillRect(0, 0, c.width, c.height);
 
 function getMousePos(canvas, evt) {
 	let rect = canvas.getBoundingClientRect();
@@ -49,8 +51,6 @@ function mouseUpListener(evt){
 }
 function mouseMoveListener(evt){
 	if (mouseDown) {
-		let c = document.getElementById('canvas');
-		let ctx = c.getContext('2d');
 		const mousePos = getMousePos(c, evt);
 		ctx.beginPath();
 		ctx.moveTo(lastMousePos.x, lastMousePos.y);
