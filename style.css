@@ -1,0 +1,23 @@
+#v{
+	height:100%;
+}
+
+#canvas{
+	border:1px solid #000000;
+	width:30%;
+	height:100%;
+}
+
+.container{
+    width: 30%;
+    overflow:hidden;
+    height: 100%;
+}
+
+table{
+	width:100%;
+}
+
+.column{
+	width: 50%;
+}

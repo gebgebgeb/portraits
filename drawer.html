@@ -1,7 +1,20 @@
 <html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
 	<body>
-		<video autoplay playsinline id="v" style="width:49%; height:100%;"></video>
-		<canvas id='canvas' style="border:1px solid #000000; width:49%; height:100%;"></canvas>
+		<table>
+			<tr>
+				<td class='column'>
+					<div class='container'>
+						<video autoplay playsinline id="v"></video>
+					</div>
+				</td>
+				<td class='column'>
+					<canvas id='canvas' ></canvas>
+				</td>
+			</tr>
+		</table>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js"></script>
 		<script src="drawer.js"></script>
 	</body>
