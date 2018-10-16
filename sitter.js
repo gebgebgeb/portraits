@@ -1,13 +1,16 @@
 const vid = document.getElementById('v')
 const canvasView = document.getElementById('canvasView')
 
-const peer = new Peer('b', {key: 'peerjs', port:9000, host:'localhost', debug:3});
+let urlParams = new URLSearchParams(window.location.search);
+let sitterId = urlParams.get('sitterId');
+
+console.log(sitterId)
+
+const peer = new Peer(sitterId, {key: 'peerjs', port:9000, host:'localhost', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
 });
-
-
 
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {

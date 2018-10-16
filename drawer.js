@@ -1,4 +1,10 @@
-const peer = new Peer('a', {key: 'peerjs', port:9000, host:'localhost', debug:3});
+let urlParams = new URLSearchParams(window.location.search);
+let sitterId = urlParams.get('sitterId')
+let drawerId = urlParams.get('drawerId')
+
+console.log(drawerId)
+
+const peer = new Peer(drawerId, {key: 'peerjs', port:9000, host:'localhost', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
@@ -7,7 +13,7 @@ peer.on('open', function(id) {
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
 	// Call a peer, providing our mediaStream
-	const webcamCall = peer.call('b', mediaStream, {'metadata':'webcam'});
+	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':'webcam'});
 	webcamCall.on('stream', function(stream) {
 			v.srcObject = stream
 	});
@@ -15,7 +21,7 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 
 	const canvasStream = canvas.captureStream(25);
 	console.log(canvasStream);
-	const canvasCall = peer.call('b', canvasStream, {'metadata':'canvas'});
+	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'});
 	canvasCall.on('stream', function(stream){
 	})
 })
