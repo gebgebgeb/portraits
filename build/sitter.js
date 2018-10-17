@@ -6,7 +6,7 @@ let sitterId = urlParams.get('sitterId');
 
 console.log(sitterId)
 
-const peer = new Peer(sitterId, {key: 'peerjs', port:9000, host:'13.58.158.190', debug:3});
+const peer = new Peer(sitterId, {key: 'peerjs', port:9000, host:'13.58.158.190', debug:3, secure:false});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
