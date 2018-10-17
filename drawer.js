@@ -4,7 +4,7 @@ let drawerId = urlParams.get('drawerId')
 
 console.log(drawerId)
 
-const peer = new Peer(drawerId, {key: 'peerjs', port:9000, host:'localhost', debug:3});
+const peer = new Peer(drawerId, {key: 'peerjs', port:9000, host:'13.58.158.190', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
