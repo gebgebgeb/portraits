@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gebgebgeb/portraits#readme",
   "dependencies": {
+    "express": "^4.16.4",
     "peer": "^0.2.10"
   }
 }
