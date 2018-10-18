@@ -1,3 +1,4 @@
+const saveButton = document.getElementById("saveButton")
 let urlParams = new URLSearchParams(window.location.search);
 let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
@@ -68,5 +69,10 @@ function mouseMoveListener(evt){
 
 		lastMousePos = mousePos;
 	}
+}
+
+saveButton.onClick = () => {
+	var img = c.toDataURL("image/png");
+	document.write('<img src="'+img+'"/>');
 }
 
