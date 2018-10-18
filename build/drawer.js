@@ -6,7 +6,8 @@ let port = urlParams.get('port')
 
 console.log(drawerId)
 
-const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
+//const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
+const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
@@ -71,7 +72,8 @@ function mouseMoveListener(evt){
 	}
 }
 
-saveButton.onClick = () => {
+saveButton.onclick = () => {
+	console.log('hello')
 	var img = c.toDataURL("image/png");
 	document.write('<img src="'+img+'"/>');
 }
