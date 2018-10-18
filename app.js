@@ -1,5 +1,5 @@
 var express = require("express");
-var port = process.env.PORT || 9000;
+var port = 9000;
 var ExpressPeerServer = require('peer').ExpressPeerServer;
 var app = express();
 var options = {
@@ -10,7 +10,7 @@ var options = {
 app.use(express.static('build'))
 
 app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/build/index.html?port="+port);
+	res.sendFile(__dirname + "/build/index.html");
 });
 
 var server = app.listen(port);
