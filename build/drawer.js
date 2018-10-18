@@ -1,10 +1,11 @@
 let urlParams = new URLSearchParams(window.location.search);
 let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
+let port = urlParams.get('port')
 
 console.log(drawerId)
 
-const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
+const peer = new Peer(drawerId, {key:'peerjs', port:port, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
