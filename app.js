@@ -1,5 +1,5 @@
 var express = require("express");
-var port = 9000;
+var port = process.env.PORT || 80;
 var ExpressPeerServer = require('peer').ExpressPeerServer;
 var app = express();
 var options = {
