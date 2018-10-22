@@ -10,6 +10,11 @@
 	height:100px;
 }
 
+#sitterLink{
+	position: absolute;
+	z-index: 3;
+}
+
 #canvas{
 	border:1px solid #000000;
 	height:100%;
