@@ -1,11 +1,15 @@
 #v{
 	height:100%;
+	z-index: 1;
+	position: absolute;
 }
 
 #canvas{
 	border:1px solid #000000;
-	width:30%;
 	height:100%;
+	z-index: 2;
+	position: absolute;
+	opacity:.3;
 }
 
 .container{

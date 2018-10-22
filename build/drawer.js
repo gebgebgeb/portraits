@@ -41,8 +41,13 @@ let ctx = c.getContext('2d');
 ctx.fillStyle="white"
 ctx.fillRect(0, 0, c.width, c.height);
 
-function getMousePos(canvas, evt) {
-	let rect = canvas.getBoundingClientRect();
+function getMousePos(evt) {
+	let rect = c.getBoundingClientRect();
+	console.log(rect.left)
+	console.log(rect.top)
+	console.log(evt.clientX)
+	console.log(evt.clientY)
+	console.log('*')
 	return {
 		x: evt.clientX - rect.left
 		, y: evt.clientY - rect.top
@@ -52,7 +57,7 @@ function getMousePos(canvas, evt) {
 function mouseDownListener(evt){
 	let c = document.getElementById('canvas')
 	mouseDown = true;
-	lastMousePos = getMousePos(c, evt);
+	lastMousePos = getMousePos(evt);
 }
 
 function mouseUpListener(evt){
@@ -60,7 +65,7 @@ function mouseUpListener(evt){
 }
 function mouseMoveListener(evt){
 	if (mouseDown) {
-		const mousePos = getMousePos(c, evt);
+		const mousePos = getMousePos(evt);
 		ctx.beginPath();
 		ctx.moveTo(lastMousePos.x, lastMousePos.y);
 		ctx.lineTo(mousePos.x, mousePos.y);
