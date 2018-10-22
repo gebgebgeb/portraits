@@ -4,6 +4,12 @@ let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
 let port = urlParams.get('port')
 
+let videoWidth;
+let videoHeight;
+
+let c = document.getElementById('canvas');
+let ctx = c.getContext('2d');
+
 console.log(drawerId)
 
 //const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
@@ -18,7 +24,16 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	// Call a peer, providing our mediaStream
 	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':'webcam'});
 	webcamCall.on('stream', function(stream) {
-			v.srcObject = stream
+		v.srcObject = stream
+		// FIXME
+		setTimeout(()=>{
+			videoWidth = v.videoWidth
+			videoHeight = v.videoHeight
+			c.width = videoWidth
+			c.height = videoHeight
+			ctx.fillStyle="white"
+			ctx.fillRect(0, 0, c.width, c.height);
+		}, 200)
 	});
 
 
@@ -33,24 +48,17 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 let mouseDown = false
 let lastMousePos
 
-let c = document.getElementById('canvas');
+
 c.addEventListener('mousedown', mouseDownListener)
 c.addEventListener('mouseup', mouseUpListener)
 c.addEventListener('mousemove', mouseMoveListener)
-let ctx = c.getContext('2d');
-ctx.fillStyle="white"
-ctx.fillRect(0, 0, c.width, c.height);
 
 function getMousePos(evt) {
 	let rect = c.getBoundingClientRect();
-	console.log(rect.left)
-	console.log(rect.top)
-	console.log(evt.clientX)
-	console.log(evt.clientY)
-	console.log('*')
+	let scaleFactor = window.innerHeight / videoHeight
 	return {
-		x: evt.clientX - rect.left
-		, y: evt.clientY - rect.top
+		x: (evt.clientX - rect.left) / scaleFactor
+		, y: (evt.clientY - rect.top) / scaleFactor
 	};
 }
 
