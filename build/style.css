@@ -20,7 +20,7 @@
 	height:100%;
 	z-index: 2;
 	position: absolute;
-	opacity:.3;
+	opacity:.5;
 }
 
 #canvasView{

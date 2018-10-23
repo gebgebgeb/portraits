@@ -7,13 +7,12 @@ let videoHeight;
 let c = document.getElementById('canvas');
 let ctx = c.getContext('2d');
 
-let randomPeerDrawer = Math.floor((Math.random()*1000))
-let randomPeerSitter = Math.floor((Math.random()*1000))
+let urlParams = new URLSearchParams(window.location.search);
+let sitterId = urlParams.get('sitterId');
+let drawerId = urlParams.get('drawerId');
 
-sitterLink.href = "sitter.html?sitterId="+randomPeerSitter+"&drawerId="+randomPeerDrawer
-
-// const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
-const peer = new Peer(randomPeerDrawer, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
+const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
+//const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
@@ -22,7 +21,7 @@ peer.on('open', function(id) {
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
 	// Call a peer, providing our mediaStream
-	const webcamCall = peer.call(randomPeerSitter, mediaStream, {'metadata':'webcam'});
+	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':'webcam'});
 	webcamCall.on('stream', function(stream) {
 		v.srcObject = stream
 		// FIXME
@@ -39,7 +38,7 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 
 	const canvasStream = canvas.captureStream(25);
 	console.log(canvasStream);
-	const canvasCall = peer.call(randomPeerSitter, canvasStream, {'metadata':'canvas'});
+	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'});
 	canvasCall.on('stream', function(stream){
 	})
 })
@@ -77,7 +76,7 @@ function mouseMoveListener(evt){
 		ctx.beginPath();
 		ctx.moveTo(lastMousePos.x, lastMousePos.y);
 		ctx.lineTo(mousePos.x, mousePos.y);
-		ctx.lineWidth = 2;
+		ctx.lineWidth = 1;
 		ctx.strokeStyle = '#009900';
 		ctx.stroke();
 

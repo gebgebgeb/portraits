@@ -10,7 +10,7 @@ var options = {
 app.use(express.static('build'))
 
 app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/build/drawer.html");
+	res.sendFile(__dirname + "/build/index.html");
 });
 
 var server = app.listen(port);
