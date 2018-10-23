@@ -4,18 +4,13 @@
 	position: absolute;
 }
 
-#sitterVideo{
+#videoOfDrawer{
 	z-index: 2;
 	position: absolute;
 	height:100px;
 }
 
-#sitterLink{
-	position: absolute;
-	z-index: 3;
-}
-
-#canvas{
+#drawerCanvas{
 	border:1px solid #000000;
 	height:100%;
 	z-index: 2;
@@ -23,7 +18,7 @@
 	opacity:.5;
 }
 
-#canvasView{
+#videoOfDrawerCanvas{
 	border:1px solid #000000;
 	height: 100%;
 	z-index: 1;
