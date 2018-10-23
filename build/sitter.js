@@ -6,8 +6,8 @@ let sitterId = urlParams.get('sitterId');
 
 console.log(sitterId)
 
-const peer = new Peer(sitterId, {key: 'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
-//const peer = new Peer(sitterId, {key: 'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
+// const peer = new Peer(sitterId, {key: 'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
+const peer = new Peer(sitterId, {key: 'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);

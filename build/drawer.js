@@ -1,4 +1,4 @@
-// const saveButton = document.getElementById("saveButton")
+const videoOfSitter = document.getElementById("videoOfSitter")
 let sitterLink = document.getElementById("sitterLink")
 
 let videoWidth;
@@ -11,8 +11,8 @@ let urlParams = new URLSearchParams(window.location.search);
 let sitterId = urlParams.get('sitterId');
 let drawerId = urlParams.get('drawerId');
 
-const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
-//const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
+// const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3});
+const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
@@ -23,11 +23,11 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	// Call a peer, providing our mediaStream
 	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':'webcam'});
 	webcamCall.on('stream', function(stream) {
-		v.srcObject = stream
+		videoOfSitter.srcObject = stream
 		// FIXME
 		setTimeout(()=>{
-			videoWidth = v.videoWidth
-			videoHeight = v.videoHeight
+			videoWidth = videoOfSitter.videoWidth
+			videoHeight = videoOfSitter.videoHeight
 			c.width = videoWidth
 			c.height = videoHeight
 			ctx.fillStyle="white"
@@ -83,10 +83,3 @@ function mouseMoveListener(evt){
 		lastMousePos = mousePos;
 	}
 }
-
-// saveButton.onclick = () => {
-// 	console.log('hello')
-// 	var img = c.toDataURL("image/png");
-// 	document.write('<img src="'+img+'"/>');
-// }
-
