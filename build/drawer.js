@@ -22,17 +22,17 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':'webcam'});
 	webcamCall.on('stream', function(stream) {
 		videoOfSitter.srcObject = stream
-		// FIXME
-		setTimeout(()=>{
-			videoWidth = videoOfSitter.videoWidth
-			videoHeight = videoOfSitter.videoHeight
-			c.width = videoWidth
-			c.height = videoHeight
-			ctx.fillStyle="white"
-			ctx.fillRect(0, 0, c.width, c.height);
-		}, 200)
 	});
 
 	const canvasStream = c.captureStream(25);
 	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'});
 })
+
+videoOfSitter.onplaying = () => {
+	videoWidth = videoOfSitter.videoWidth
+	videoHeight = videoOfSitter.videoHeight
+	c.width = videoWidth
+	c.height = videoHeight
+	ctx.fillStyle="white"
+	ctx.fillRect(0, 0, c.width, c.height);
+}

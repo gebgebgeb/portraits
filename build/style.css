@@ -24,17 +24,3 @@
 	z-index: 1;
 	position: absolute;
 }
-
-.container{
-    width: 30%;
-    overflow:hidden;
-    height: 100%;
-}
-
-table{
-	width:100%;
-}
-
-.column{
-	width: 50%;
-}

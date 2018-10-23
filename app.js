@@ -1,20 +1,19 @@
-var express = require("express");
-var port = process.env.PORT || 9000;
-var ExpressPeerServer = require('peer').ExpressPeerServer;
-var app = express();
-var options = {
-  debug: true
-	, key:'peerjs'
-}
+const express = require("express");
+const port = process.env.PORT || 9000;
+const app = express();
+const server = app.listen(port);
 
 app.use(express.static('build'))
-
 app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/build/index.html");
 });
 
-var server = app.listen(port);
-
-var peerserver = ExpressPeerServer(server, options);
+//Peer server instantiation
+const ExpressPeerServer = require('peer').ExpressPeerServer;
+const peerServerOptions = {
+  debug: true
+	, key:'peerjs'
+}
+const peerserver = ExpressPeerServer(server, peerServerOptions);
 
 app.use('/api', peerserver);
