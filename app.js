@@ -16,27 +16,19 @@ let portraitStream
  
 io.of('/user').on('connection', function(socket) {
   ss(socket).on('portrait', function(stream, data) {
-    portraitStream = stream
-		console.log('set portrait stream!' + Object.keys(portraitStream))
+    // portraitStream = stream
+		// console.log('set portrait stream!' + Object.keys(portraitStream))
+		console.log(stream)
+		console.log(data)
+		portraitStream = stream
   })
 })
 
 io.of('/serve').on('connection', function(socket) {
 	ss(socket).emit('portrait', portraitStream)
-	console.log('emitted portrait stream!' + Object.keys(portraitStream))
+		console.log("emitting from serve endpoint")
+	// console.log('emitted portrait stream!' + Object.keys(portraitStream))
 })
-
-// app.get('/godMode', (req,res)=> {
-// 	ss(socket).emit('portrait', canvasStream)
-// 	io.of('/').on('connection', function (socket) {
-//     ss(socket).on('hot', function (stream, data) {
-//         const _stream = ss.createStream();
-//         ss(socket).emit('hot', _stream);
-//         stream.pipe(_stream);
-//     });
-// });
-// })
-
 
 let sitterId = null
 

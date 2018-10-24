@@ -33,8 +33,9 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	//var io = require('socket.io-client');
 	//var ss = require('socket.io-stream');
 	 
-	 
-	ss(socket).emit('portrait', canvasStream)
+	socket.on('connect',function(){      
+      ss(socket).emit('portrait',canvasStream);
+	})    
 	// fs.createReadStream(filename).pipe(stream)
 })
 
