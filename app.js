@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/build/index.html");
 });
 
-var io = require('socket.io').listen(80);
+var io = require('socket.io')(server)
 var ss = require('socket.io-stream');
 var path = require('path');
 
@@ -20,16 +20,22 @@ io.of('/user').on('connection', function(socket) {
   })
 })
 
-app.get('/godMode', (req,res)=> {
-	ss(socket).emit('portrait', canvasStream)
-	io.of('/').on('connection', function (socket) {
-    ss(socket).on('hot', function (stream, data) {
-        const _stream = ss.createStream();
-        ss(socket).emit('hot', _stream);
-        stream.pipe(_stream);
-    });
-});
+io.of('/serve').on('connection', function(socket) {
+  ss(socket).on('portrait', function(stream, data) {
+    portraitStream = stream
+  })
 })
+
+// app.get('/godMode', (req,res)=> {
+// 	ss(socket).emit('portrait', canvasStream)
+// 	io.of('/').on('connection', function (socket) {
+//     ss(socket).on('hot', function (stream, data) {
+//         const _stream = ss.createStream();
+//         ss(socket).emit('hot', _stream);
+//         stream.pipe(_stream);
+//     });
+// });
+// })
 
 
 let sitterId = null

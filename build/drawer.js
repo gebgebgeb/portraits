@@ -27,6 +27,16 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 
 	const canvasStream = c.captureStream(25)
 	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'})
+
+	//Socket stream
+	//var io = require('socket.io-client');
+	//var ss = require('socket.io-stream');
+	 
+	var socket = io.connect('http://localhost:9000/user');
+	var stream = ss.createStream();
+	 
+	ss(socket).emit('portrait', canvasStream)
+	// fs.createReadStream(filename).pipe(stream)
 })
 
 videoOfSitter.onplaying = () => {
@@ -84,12 +94,3 @@ function drawStroke(evt){
 	}
 }
 
-//Socket stream
-var io = require('socket.io-client');
-var ss = require('socket.io-stream');
- 
-var socket = io.connect('http://localhost/user');
-// var stream = ss.createStream();
- 
-ss(socket).emit('portrait', canvasStream)
-// fs.createReadStream(filename).pipe(stream)
