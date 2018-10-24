@@ -8,6 +8,12 @@ app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/build/index.html");
 });
 
+// const sitterId
+
+// app.get("/nextAvailablePage", (req, res) => {
+// 	sitterId = MATH.random()
+
+
 //Peer server instantiation
 const ExpressPeerServer = require('peer').ExpressPeerServer;
 const peerServerOptions = {
