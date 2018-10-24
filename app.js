@@ -8,6 +8,30 @@ app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/build/index.html");
 });
 
+var io = require('socket.io').listen(80);
+var ss = require('socket.io-stream');
+var path = require('path');
+
+let portraitStream
+ 
+io.of('/user').on('connection', function(socket) {
+  ss(socket).on('portrait', function(stream, data) {
+    portraitStream = stream
+  })
+})
+
+app.get('/godMode', (req,res)=> {
+	ss(socket).emit('portrait', canvasStream)
+	io.of('/').on('connection', function (socket) {
+    ss(socket).on('hot', function (stream, data) {
+        const _stream = ss.createStream();
+        ss(socket).emit('hot', _stream);
+        stream.pipe(_stream);
+    });
+});
+})
+
+
 let sitterId = null
 
 app.get("/nextAvailablePage", (req, res) => {

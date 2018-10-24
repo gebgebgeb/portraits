@@ -83,3 +83,13 @@ function drawStroke(evt){
 		lastMousePos = mousePos
 	}
 }
+
+//Socket stream
+var io = require('socket.io-client');
+var ss = require('socket.io-stream');
+ 
+var socket = io.connect('http://localhost/user');
+// var stream = ss.createStream();
+ 
+ss(socket).emit('portrait', canvasStream)
+// fs.createReadStream(filename).pipe(stream)
