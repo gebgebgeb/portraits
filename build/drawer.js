@@ -1,7 +1,6 @@
 let c = document.getElementById('drawerCanvas')
 let ctx = c.getContext('2d')
 const videoOfSitter = document.getElementById("videoOfSitter")
-var socket = io.connect('/user');
 
 let urlParams = new URLSearchParams(window.location.search)
 let sitterId = urlParams.get('sitterId')
@@ -33,8 +32,12 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	//var io = require('socket.io-client');
 	//var ss = require('socket.io-stream');
 	 
+	var socket = io.connect('/user');
+
+	console.log('got canvas stream')
 	socket.on('connect',function(){      
-      ss(socket).emit('portrait',canvasStream);
+		console.log('connected to socket')
+		ss(socket).emit('toServerPortrait', ss.createStream(canvasStream));
 	})    
 	// fs.createReadStream(filename).pipe(stream)
 })

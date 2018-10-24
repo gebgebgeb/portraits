@@ -15,18 +15,21 @@ var path = require('path');
 let portraitStream
  
 io.of('/user').on('connection', function(socket) {
-  ss(socket).on('portrait', function(stream, data) {
+  ss(socket).on('toServerPortrait', function(stream, data) {
     // portraitStream = stream
 		// console.log('set portrait stream!' + Object.keys(portraitStream))
 		console.log(stream)
 		console.log(data)
+		console.log('app received stream from drawer')
 		portraitStream = stream
   })
 })
 
 io.of('/serve').on('connection', function(socket) {
-	ss(socket).emit('portrait', portraitStream)
-		console.log("emitting from serve endpoint")
+	let stream = ss.createStream()
+	portraitStream.pipe(stream)
+	ss(socket).emit('fromServerPortrait', stream)
+	console.log("emitting from serve endpoint")
 	// console.log('emitted portrait stream!' + Object.keys(portraitStream))
 })
 
