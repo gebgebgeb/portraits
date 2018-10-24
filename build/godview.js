@@ -5,5 +5,6 @@ let godVideo = document.getElementById('godVideo')
 // ss(socket).emit('portrait', canvasStream)
 
 ss(socket).on('portrait', function(stream, data) {
+	console.log(stream)
 	godVideo.srcObject = stream
 })

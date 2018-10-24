@@ -17,11 +17,13 @@ let portraitStream
 io.of('/user').on('connection', function(socket) {
   ss(socket).on('portrait', function(stream, data) {
     portraitStream = stream
+		console.log('set portrait stream!' + Object.keys(portraitStream))
   })
 })
 
 io.of('/serve').on('connection', function(socket) {
-    ss(socket).emit('portrait', portraitStream)
+	ss(socket).emit('portrait', portraitStream)
+	console.log('emitted portrait stream!' + Object.keys(portraitStream))
 })
 
 // app.get('/godMode', (req,res)=> {
