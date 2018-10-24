@@ -8,10 +8,19 @@ app.get("/", (req, res) => {
 	res.sendFile(__dirname + "/build/index.html");
 });
 
-// const sitterId
+let sitterId = null
 
-// app.get("/nextAvailablePage", (req, res) => {
-// 	sitterId = MATH.random()
+app.get("/nextAvailablePage", (req, res) => {
+	console.log(sitterId)
+	if(sitterId === null){
+		sitterId = Math.floor(Math.random() * 1000)
+		res.redirect('/sitter.html?sitterId=' + sitterId)
+	}else{
+		let drawerId = Math.floor(Math.random() * 1000)
+		res.redirect('/drawer.html?sitterId=' + sitterId + '&drawerId=' + drawerId)
+		sitterId = null
+	}
+})
 
 
 //Peer server instantiation

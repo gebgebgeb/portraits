@@ -24,3 +24,7 @@
 	z-index: 1;
 	position: absolute;
 }
+
+td{
+	vertical-align:top;
+}
