@@ -21,9 +21,7 @@ io.of('/user').on('connection', function(socket) {
 })
 
 io.of('/serve').on('connection', function(socket) {
-  ss(socket).on('portrait', function(stream, data) {
-    portraitStream = stream
-  })
+    ss(socket).emit('portrait', portraitStream)
 })
 
 // app.get('/godMode', (req,res)=> {
