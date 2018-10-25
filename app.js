@@ -8,6 +8,7 @@ app.use(express.static('build'))
 let allDrawerIds = []
 let allSitterIds = []
 let allGodViewIds = []
+let drawerIdsForGodViews = []
 
 let generateId = ()=>{
 	let candidateId
@@ -44,7 +45,7 @@ app.get("/nextAvailablePage", (req, res) => {
 app.get("/godView", (req, res) => {
 	godViewId = generateId()
 	allGodViewIds.push(godViewId)
-	res.redirect('/godview.html?godViewId=' + godViewId + '&allDrawerIds=' + JSON.stringify(allDrawerIds))
+	res.redirect('/godview.html?godViewId=' + godViewId + '&allDrawerIds=' + JSON.stringify(drawerIdsForGodViews))
 })
 
 
@@ -55,6 +56,12 @@ const peerServerOptions = {
 	, key:'peerjs'
 }
 const peerserver = ExpressPeerServer(server, peerServerOptions);
+
+peerserver.on('connect', function(id) { 
+	if (allDrawerIds.includes(id)) {
+		drawerIdsForGodViews.push(id)
+	}
+})
 
 peerserver.on('disconnect', function(id) { 
 	var index = allDrawerIds.indexOf(id);
@@ -68,7 +75,11 @@ peerserver.on('disconnect', function(id) {
   	var index = allGodViewIds.indexOf(id);
 	if (index > -1) {
   		array.splice(index, 1);
-  	}				
+  	}
+  	var index = drawerIdsForGodViews.indexOf(id);
+	if (index > -1) {
+  		array.splice(index, 1);
+  	}						
 })
 
 app.use('/api', peerserver);
