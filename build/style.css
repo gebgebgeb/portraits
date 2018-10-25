@@ -25,6 +25,10 @@
 	position: absolute;
 }
 
+.godViewVideo{
+	width: 100%;
+}
+
 td{
 	vertical-align:top;
 }
