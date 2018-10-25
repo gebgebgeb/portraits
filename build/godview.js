@@ -1,58 +1,48 @@
-// var socket = io.connect('http://localhost:9000/serve');
-// var stream = ss.createStream();
-
-// ss(socket).emit('portrait', canvasStream)
-
-// socket.on('connect',function(){      
-// 	ss(socket).on('fromServerPortrait', function(stream, data) {
-// 		console.log(stream)
-// 		console.log(data)
-// 		godVideo.srcObject = stream
-// 	})
-// })
 let godVideo = document.getElementById('godVideo') 
+let urlParams = new URLSearchParams(window.location.search);
+let drawerIds = JSON.parse(urlParams.get('allDrawerIds'))
+let godViewId = urlParams.get('godViewId')
+const drawerCalls = []
+const videos = []
 
-const peer = new Peer(1001, {key: 'peerjs', port:9000, host:'localhost', path: '/api', debug:3});
+// const peer = new Peer(godViewId, {key: 'peerjs', port:9000, host:'localhost', path: '/api', debug:2});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);
+  console.log('drawer ids: '+drawerIds)
 });
 
-// navigator.mediaDevices.getUserMedia({video:true, audio:false})
-// .then(function(mediaStream) {
-// 	peer.on('call', function(call) {
-// 		// Answer the call, providing our mediaStream
-// 		call.answer(mediaStream);
-		
-// 		call.on('stream', function(stream) {
-// 			// if(call.metadata == 'webcam'){
-// 			// 	videoOfDrawer.srcObject = stream
-// 			// }
-// 			// if(call.metadata == 'canvas'){
-// 			// 	videoOfDrawerCanvas.srcObject = stream
-// 			// }
-// 			godVideo.srcObject = stream
-// 		});
+
+for (drawerId of drawerIds) {
+	navigator.mediaDevices.getUserMedia({video:true, audio:false})
+	.then(function(mediaStream) {
+		let peer = new Peer(godViewId+drawerId, {key: 'peerjs', port:9000, host:'localhost', path: '/api', debug:2});
+		drawerCalls.push(peer.call(drawerId,mediaStream))
+		console.log(drawerCalls)
+		drawerCalls[drawerCalls.length-1].on('stream', function(stream) {
+			videos.push(document.createElement("video"))
+			videos[videos.length-1].srcObject = stream
+			videos[videos.length-1].autoplay = true
+			document.body.appendChild(videos[videos.length-1])
+		})
+	})
+}
+
+// peer.on('call', function(call) {
+// 	// Answer the call, providing our mediaStream
+// 	call.answer();
+// 	console.log("connected")
+// 	call.on('stream', function(stream) {
+// 		// if(call.metadata == 'webcam'){
+// 		// 	videoOfDrawer.srcObject = stream
+// 		// }
+// 		// if(call.metadata == 'canvas'){
+// 		// 	videoOfDrawerCanvas.srcObject = stream
+// 		console.log("got stream")
+// 		// }
+// 		godVideo.srcObject = stream
 // 	});
 // });
-navigator.mediaDevices.getUserMedia({video:true, audio:false})
-.then(function(mediaStream) {
 
-peer.on('call', function(call) {
-	// Answer the call, providing our mediaStream
-	call.answer();
-	console.log("connected")
-	call.on('stream', function(stream) {
-		// if(call.metadata == 'webcam'){
-		// 	videoOfDrawer.srcObject = stream
-		// }
-		// if(call.metadata == 'canvas'){
-		// 	videoOfDrawerCanvas.srcObject = stream
-		console.log("got stream")
-		// }
-		godVideo.srcObject = stream
-	});
-});
-
-})
+// })
 

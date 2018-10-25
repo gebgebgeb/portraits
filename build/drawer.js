@@ -33,7 +33,10 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	const canvasStream = c.captureStream(25)
 	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'})
 
-	const godCall = peer.call(1001,canvasStream)
+	peer.on('call', function(call) {
+		// Answer the call, providing our mediaStream
+		call.answer(canvasStream);
+	})
 
 	//Socket stream
 	//var io = require('socket.io-client');
