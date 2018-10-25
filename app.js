@@ -56,4 +56,19 @@ const peerServerOptions = {
 }
 const peerserver = ExpressPeerServer(server, peerServerOptions);
 
+peerserver.on('disconnect', function(id) { 
+	var index = allDrawerIds.indexOf(id);
+	if (index > -1) {
+  		array.splice(index, 1);
+  	}
+  	var index = allSitterIds.indexOf(id);
+	if (index > -1) {
+  		array.splice(index, 1);
+  	}	
+  	var index = allGodViewIds.indexOf(id);
+	if (index > -1) {
+  		array.splice(index, 1);
+  	}				
+})
+
 app.use('/api', peerserver);
