@@ -10,15 +10,18 @@ let allSitterIds = []
 let allGodViewIds = []
 
 let generateId = ()=>{
-	return Math.floor(Math.random() * 1000)
+	let candidateId
+	do{
+		candidateId = Math.floor(Math.random() * 1000)
+	}while(allDrawerIds.includes(candidateId) || allSitterIds.includes(candidateId) || allGodViewIds.includes(candidateId))
+	return candidateId
 }
 
 app.get("/", (req, res) => {
 	let drawerId = generateId()
-	let sitterId = generateId()
 	allDrawerIds.push(drawerId)
+	let sitterId = generateId()
 	allSitterIds.push(sitterId)
-	console.log(allDrawerIds)
 	res.redirect("/matcher.html?sitterId=" + sitterId + "&drawerId=" + drawerId);
 });
 
