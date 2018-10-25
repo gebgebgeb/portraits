@@ -1,76 +1,58 @@
 <html>
+	<head>
+		<link rel='stylesheet' type='text/css' href='style.css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
 <body>
-	<h1>
-		Fun Portraits App
-	</h1>
-
-	<h2>
-		Instructions:
-	</h2>
-	<table>
-		<tr>
-			<td>
-				<h3>
-					If you would like to draw a friend:
-				</h3>
-				<ol>
-					<li>
-						Send the "sitter link" url to your friend
-					</li><li>
-						Wait until they have opened the page
-					</li><li>
-						Load the "drawer link" in your browser
-					</li><li>
-						Begin drawing!
-					</li>
-				</ol>
-			</td>
-			<td>
-				<h3>
-					If you would like to be drawn by a friend:
-				</h3>
-				<ol>
-					<li>
-						Open the "sitter link" in your browser
-					</li><li>
-						Send the "drawer link" url to your friend
-					</li><li>
-						Wait for your friend
-					</li><li>
-						Be drawn!
-					</li>
-				</ol>
-			</td>
-			<td>
-				<h3>
-					If you would like to draw or be drawn by a stranger:
-				</h3>
-				<ol>
-					<li>
-						<a id="autoMatchLink" href="/nextAvailablePage">Click this link!</a>
-					</li><li>
-						Wait patiently.
-					</li><li>
-						Seriously that's it.
-					</li><li>
-						We're matching you.
-					</li>
-				</ol>
-			</td>
-		</tr>
-	</table>
-	<p>
-		<a id="sitterLink">sitter link</a> 
-		<a id="drawerLink">drawer link</a>
-		<a href="/godView">god view</a>
-	</p>
-	<p>
-		<a href="mailto:davidgeorgeportraits@gmail.com?Subject=Feedback">Send feedback</a> 
-		to davidgeorgeportraits@gmail.com
-	</p>
-	<p>
-		<a href="https://github.com/gebgebgeb/portraits">Source code</a> 
-	</p>
+	<div class='container-fluid mt-5'>
+		<h1 class='text-center'>
+			Fun Portraits App
+		</h1>
+		<div class='row mt-3'>
+			<div class='col-3 offset-3'>
+				<div class='card'>
+					<div class="card-body">
+						<h5 class="card-title">If you would like to draw or be drawn by a stranger:</h5>
+						<p class="card-text">Click this link and wait! If you're sent to drawer.html, you may need to refresh your page if nothing happens after a moment.</p>
+						<a href="/nextAvailablePage" class="btn btn-primary">Click me!</a>
+					</div>
+				</div>
+			</div>
+			<div class='col-3'>
+				<div class='card'>
+					<div class="card-body">
+						<h5 class="card-title">If you would like to draw with a friend:</h5>
+						<ol>
+							<li>
+								The person who would like to be drawn should open the Sitter Link
+							</li><li>
+								The person who would like to draw should open the Drawer Link
+							</li><li>
+								The drawer may need to refresh their page if things don't seem to be working.
+							</li><li>
+								Begin drawing!
+							</li>
+						</ol>
+						<a id='sitterLink' class="btn btn-primary">Sitter Link</a>
+						<a id='drawerLink' class="btn btn-primary">Drawer Link</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="container">
+			<p>
+				<a href="/godView">god view</a>
+			</p>
+			<p>
+				<a href="mailto:davidgeorgeportraits@gmail.com?Subject=Feedback">Send feedback</a> 
+				to davidgeorgeportraits@gmail.com
+			</p>
+			<p>
+				<a href="https://github.com/gebgebgeb/portraits">Source code</a> 
+			</p>
+			</div>
+		</div>
 
 	<script src="matcher.js"></script>
 </body>
