@@ -12,10 +12,15 @@ let videoHeight
 
 // const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
 const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
+// const peer2 = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id)
 })
+
+// peer2.on('open', function(id) {
+//   console.log('My peer ID is: ' + id)
+// })
 
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
@@ -28,17 +33,19 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	const canvasStream = c.captureStream(25)
 	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'})
 
+	const godCall = peer.call(1001,canvasStream)
+
 	//Socket stream
 	//var io = require('socket.io-client');
 	//var ss = require('socket.io-stream');
 	 
-	var socket = io.connect('/user');
+	// var socket = io.connect('/user');
 
-	console.log('got canvas stream')
-	socket.on('connect',function(){      
-		console.log('connected to socket')
-		ss(socket).emit('toServerPortrait', ss.createStream(canvasStream));
-	})    
+	// console.log('got canvas stream')
+	// socket.on('connect',function(){      
+	// 	console.log('connected to socket')
+	// 	ss(socket).emit('toServerPortrait', ss.createStream(canvasStream));
+	// })    
 	// fs.createReadStream(filename).pipe(stream)
 })
 
