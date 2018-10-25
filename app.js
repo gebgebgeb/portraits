@@ -4,47 +4,44 @@ const app = express();
 const server = app.listen(port);
 
 app.use(express.static('build'))
+
+let allDrawerIds = []
+let allSitterIds = []
+let allGodViewIds = []
+
+let generateId = ()=>{
+	return Math.floor(Math.random() * 1000)
+}
+
 app.get("/", (req, res) => {
-	res.sendFile(__dirname + "/build/index.html");
+	let drawerId = generateId()
+	let sitterId = generateId()
+	allDrawerIds.push(drawerId)
+	allSitterIds.push(sitterId)
+	console.log(allDrawerIds)
+	res.redirect("/matcher.html?sitterId=" + sitterId + "&drawerId=" + drawerId);
 });
 
-var io = require('socket.io')(server)
-var ss = require('socket.io-stream');
-var path = require('path');
-
-let portraitStream
- 
-io.of('/user').on('connection', function(socket) {
-  ss(socket).on('toServerPortrait', function(stream, data) {
-    // portraitStream = stream
-		// console.log('set portrait stream!' + Object.keys(portraitStream))
-		console.log(stream)
-		console.log(data)
-		console.log('app received stream from drawer')
-		portraitStream = stream
-  })
-})
-
-io.of('/serve').on('connection', function(socket) {
-	let stream = ss.createStream()
-	portraitStream.pipe(stream)
-	ss(socket).emit('fromServerPortrait', stream)
-	console.log("emitting from serve endpoint")
-	// console.log('emitted portrait stream!' + Object.keys(portraitStream))
-})
-
-let sitterId = null
+let lastSitterId = null
 
 app.get("/nextAvailablePage", (req, res) => {
-	console.log(sitterId)
-	if(sitterId === null){
-		sitterId = Math.floor(Math.random() * 1000)
-		res.redirect('/sitter.html?sitterId=' + sitterId)
+	console.log(lastSitterId)
+	if(lastSitterId === null){
+		lastSitterId = generateId()
+		allSitterIds.push(lastSitterId)
+		res.redirect('/sitter.html?sitterId=' + lastSitterId)
 	}else{
-		let drawerId = Math.floor(Math.random() * 1000)
-		res.redirect('/drawer.html?sitterId=' + sitterId + '&drawerId=' + drawerId)
-		sitterId = null
+		let drawerId = generateId()
+		allDrawerIds.push(drawerId)
+		res.redirect('/drawer.html?sitterId=' + lastSitterId + '&drawerId=' + drawerId)
+		lastSitterId = null
 	}
+})
+
+app.get("/godView", (req, res) => {
+	godViewId = generateId()
+	allGodViewIds.push(godViewId)
+	res.redirect('/godview.html?godViewId=' + godViewId + '&allDrawerIds=' + JSON.stringify(allDrawerIds))
 })
 
 
