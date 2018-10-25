@@ -60,6 +60,7 @@ const peerserver = ExpressPeerServer(server, peerServerOptions);
 peerserver.on('connect', function(id) { 
 	if (allDrawerIds.includes(id)) {
 		drawerIdsForGodViews.push(id)
+		console.log("drawer connected: "+id)
 	}
 })
 
