@@ -6,8 +6,8 @@ const drawerCalls = []
 const videos = []
 const row = document.getElementById('videoTable')
 
-//const peer = new Peer(godViewId, {key: 'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:2});
-const peer = new Peer(godViewId, {key: 'peerjs', port:9000, host:'localhost', path: '/api', debug:2});
+const peer = new Peer(godViewId, {key: 'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:2});
+//const peer = new Peer(godViewId, {key: 'peerjs', port:9000, host:'localhost', path: '/api', debug:2});
 
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id);

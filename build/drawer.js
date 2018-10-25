@@ -10,8 +10,8 @@ let scaleFactor
 let videoWidth
 let videoHeight
 
-//const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
-const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
+const peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
+//const peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
 // const peer2 = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
 
 peer.on('open', function(id) {
