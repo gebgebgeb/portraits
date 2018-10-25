@@ -68,19 +68,19 @@ peerserver.on('disconnect', function(s_id) {
 	let id = parseInt(s_id)
 	var index = allDrawerIds.indexOf(id);
 	if (index > -1) {
-  		array.splice(index, 1);
+  		allDrawerIds.splice(index, 1);
   	}
   	var index = allSitterIds.indexOf(id);
 	if (index > -1) {
-  		array.splice(index, 1);
+  		allSitterIds.splice(index, 1);
   	}	
   	var index = allGodViewIds.indexOf(id);
 	if (index > -1) {
-  		array.splice(index, 1);
+  		allGodViewIds.splice(index, 1);
   	}
   	var index = drawerIdsForGodViews.indexOf(id);
 	if (index > -1) {
-  		array.splice(index, 1);
+  		drawerIdsForGodViews.splice(index, 1);
   	}						
 })
 
