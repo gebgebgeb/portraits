@@ -19,11 +19,15 @@ let generateId = ()=>{
 }
 
 app.get("/", (req, res) => {
+	res.redirect("/matcher.html")
+});
+
+app.get("/friendpairs", (req, res) => {
 	let drawerId = generateId()
 	allDrawerIds.push(drawerId)
 	let sitterId = generateId()
 	allSitterIds.push(sitterId)
-	res.redirect("/matcher.html?sitterId=" + sitterId + "&drawerId=" + drawerId);
+	res.send({'sitterId': sitterId, 'drawerId': drawerId})
 });
 
 let lastSitterId = null
@@ -45,7 +49,7 @@ app.get("/nextAvailablePage", (req, res) => {
 app.get("/godView", (req, res) => {
 	godViewId = generateId()
 	allGodViewIds.push(godViewId)
-	res.redirect('/godview.html?godViewId=' + godViewId + '&allDrawerIds=' + JSON.stringify(drawerIdsForGodViews))
+	res.send({'godViewId': godViewId, 'allDrawerIds': drawerIdsForGodViews})
 })
 
 
