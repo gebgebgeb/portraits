@@ -52,6 +52,9 @@ app.get("/godView", (req, res) => {
 	res.send({'godViewId': godViewId, 'allDrawerIds': drawerIdsForGodViews})
 })
 
+app.post('/saveportrait', (req,res) => {
+	res.send('coollll')
+})
 
 //Peer server instantiation
 const ExpressPeerServer = require('peer').ExpressPeerServer;

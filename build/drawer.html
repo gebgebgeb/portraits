@@ -5,9 +5,9 @@
 	<body>
 		<video autoplay playsinline id='videoOfSitter'></video>
 		<canvas id='drawerCanvas'></canvas>
+		<button id='saveDrawing' onclick="savePortrait()">Save Drawing</button>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js'></script>
-		<script src='socket.io.js'></script>
-		<script src='socket.io-stream.js'></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src='drawer.js'></script>
 	</body>
 </html>

@@ -25,6 +25,12 @@
 	position: absolute;
 }
 
+#saveDrawing{
+	z-index: 3;
+	position: absolute;
+	height:100px;
+}
+
 .godViewVideo{
 	width: 100%;
 }

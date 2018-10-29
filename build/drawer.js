@@ -1,10 +1,17 @@
 let c = document.getElementById('drawerCanvas')
 let ctx = c.getContext('2d')
 const videoOfSitter = document.getElementById("videoOfSitter")
+const saveButton = document.getElementById('saveButton')
 
 let urlParams = new URLSearchParams(window.location.search)
 let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
+
+const portraitHistory = {
+	'canvasWidth': null,
+	'canvasHeight': null,
+	'mousePositionArray': []
+}
 
 
 let productionServer = window.location.hostname.indexOf("localhost") === -1
@@ -68,6 +75,8 @@ videoOfSitter.onplaying = () => {
 	scaleFactor = window.innerHeight / videoHeight
 	ctx.fillStyle="white"
 	ctx.fillRect(0, 0, c.width, c.height)
+	portraitHistory.canvasWidth = videoWidth
+	portraitHistory.canvasHeight = videoHeight
 }
 
 document.body.onresize = () => {
@@ -85,6 +94,8 @@ c.addEventListener('mousemove', drawStroke)
 function getMousePos(evt) {
 	let rect = c.getBoundingClientRect()
 	let scaleFactor = window.innerHeight / videoHeight
+	portraitHistory.mousePositionArray.push([(evt.clientX - rect.left),(evt.clientY-rect.top)])
+	console.log(portraitHistory)
 	return {
 		x: (evt.clientX - rect.left) / scaleFactor
 		, y: (evt.clientY - rect.top) / scaleFactor
@@ -113,5 +124,11 @@ function drawStroke(evt){
 
 		lastMousePos = mousePos
 	}
+}
+
+const savePortrait = () => {
+	axios.post('/saveportrait', portraitHistory).then((response)=>{
+		console.log(response)
+	})
 }
 
