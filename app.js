@@ -1,14 +1,37 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require('mongoose')
+
 const port = process.env.PORT || 9000;
 const app = express();
 const server = app.listen(port);
 
 app.use(express.static('build'))
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portraithistories')
+
+let db = mongoose.connection
+db.on('error', console.error.bind(console, 'mongo connection error'))
+db.once('open', function(callback){
+	console.log('database connection succeeded!')
+})
+
+let portraitSchema = new mongoose.Schema({
+	canvasHeight: Number,
+	canvasWidth: Number,
+	mousePositionArray: Array
+})
+
+let Portrait = mongoose.model('Portrait', portraitSchema)
 
 let allDrawerIds = []
 let allSitterIds = []
 let allGodViewIds = []
 let drawerIdsForGodViews = []
+
+let allHistories = []
 
 let generateId = ()=>{
 	let candidateId
@@ -53,7 +76,15 @@ app.get("/godView", (req, res) => {
 })
 
 app.post('/saveportrait', (req,res) => {
-	res.send('coollll')
+	let myData = new Portrait(req.body)
+	myData.save((error, entry) => {
+		if (error){
+			console.error(error);
+		} else{
+			res.send(entry.id)
+			console.log('saved!')
+		}
+	})
 })
 
 //Peer server instantiation
