@@ -53,6 +53,13 @@ app.get("/friendpairs", (req, res) => {
 	res.send({'sitterId': sitterId, 'drawerId': drawerId})
 });
 
+app.get("/previousportrait", (req, res) => {
+	Portrait.find(req.body, (err, entry) => {
+		res.send(entry)
+	})
+});
+
+
 let lastSitterId = null
 
 app.get("/nextAvailablePage", (req, res) => {

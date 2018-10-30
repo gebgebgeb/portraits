@@ -95,7 +95,6 @@ function getMousePos(evt) {
 	let rect = c.getBoundingClientRect()
 	let scaleFactor = window.innerHeight / videoHeight
 	portraitHistory.mousePositionArray.push([(evt.clientX - rect.left),(evt.clientY-rect.top)])
-	console.log(portraitHistory)
 	return {
 		x: (evt.clientX - rect.left) / scaleFactor
 		, y: (evt.clientY - rect.top) / scaleFactor
@@ -129,6 +128,7 @@ function drawStroke(evt){
 const savePortrait = () => {
 	axios.post('/saveportrait', portraitHistory).then((response)=>{
 		console.log(response)
+		console.log('previousPortrait.html?id='+response.data)
 	})
 }
 
