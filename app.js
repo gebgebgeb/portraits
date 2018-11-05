@@ -54,7 +54,8 @@ app.get("/friendpairs", (req, res) => {
 });
 
 app.get("/previousportrait", (req, res) => {
-	Portrait.find(req.body, (err, entry) => {
+	console.log(req.query)
+	Portrait.findOne(req.query, (err, entry) => {
 		res.send(entry)
 	})
 });

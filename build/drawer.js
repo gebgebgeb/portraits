@@ -94,7 +94,11 @@ c.addEventListener('mousemove', drawStroke)
 function getMousePos(evt) {
 	let rect = c.getBoundingClientRect()
 	let scaleFactor = window.innerHeight / videoHeight
-	portraitHistory.mousePositionArray.push([(evt.clientX - rect.left),(evt.clientY-rect.top)])
+	portraitHistory.mousePositionArray.push({
+		x: (evt.clientX - rect.left)/scaleFactor
+		, y: (evt.clientY-rect.top)/scaleFactor
+		, mouseUp: false
+	})
 	return {
 		x: (evt.clientX - rect.left) / scaleFactor
 		, y: (evt.clientY - rect.top) / scaleFactor
@@ -109,6 +113,13 @@ function mouseDownListener(evt){
 
 function mouseUpListener(evt){
 	mouseDown = false  
+	let rect = c.getBoundingClientRect()
+	let scaleFactor = window.innerHeight / videoHeight
+	portraitHistory.mousePositionArray.push({
+		x: (evt.clientX - rect.left)/scaleFactor
+		, y: (evt.clientY-rect.top)/scaleFactor
+		, mouseUp: true 
+	})
 }
 
 function drawStroke(evt){
@@ -127,8 +138,7 @@ function drawStroke(evt){
 
 const savePortrait = () => {
 	axios.post('/saveportrait', portraitHistory).then((response)=>{
-		console.log(response)
-		console.log('previousPortrait.html?id='+response.data)
+		window.open('/previousPortrait.html?id='+response.data)
 	})
 }
 

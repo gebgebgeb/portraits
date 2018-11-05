@@ -7,7 +7,7 @@
 #videoOfDrawer{
 	z-index: 2;
 	position: absolute;
-	height:100px;
+	width:200px;
 }
 
 #drawerCanvas{
@@ -29,6 +29,13 @@
 	z-index: 3;
 	position: absolute;
 	height:100px;
+}
+
+#saveDrawingSitter{
+	z-index: 3;
+	position: absolute;
+	height:100px;
+	margin-left: 200px;
 }
 
 .godViewVideo{

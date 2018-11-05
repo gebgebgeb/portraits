@@ -36,3 +36,8 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	});
 });
 
+const savePortrait = () => {
+	axios.post('/saveportrait', portraitHistory).then((response)=>{
+		window.open('/previousPortrait.html?id='+response.data)
+	})
+}
