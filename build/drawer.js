@@ -21,6 +21,7 @@ let videoWidth
 let videoHeight
 
 let peer
+let conn
 
 if (productionServer) {
 	peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
@@ -52,19 +53,8 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		// Answer the call, providing our mediaStream
 		call.answer(canvasStream);
 	})
+	conn = peer.connect(sitterId)
 
-	//Socket stream
-	//var io = require('socket.io-client');
-	//var ss = require('socket.io-stream');
-	 
-	// var socket = io.connect('/user');
-
-	// console.log('got canvas stream')
-	// socket.on('connect',function(){      
-	// 	console.log('connected to socket')
-	// 	ss(socket).emit('toServerPortrait', ss.createStream(canvasStream));
-	// })    
-	// fs.createReadStream(filename).pipe(stream)
 })
 
 videoOfSitter.onplaying = () => {
@@ -120,6 +110,8 @@ function mouseUpListener(evt){
 		, y: (evt.clientY-rect.top)/scaleFactor
 		, mouseUp: true 
 	})
+	conn.send(portraitHistory)
+	console.log("should have sent")
 }
 
 function drawStroke(evt){

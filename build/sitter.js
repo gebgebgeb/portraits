@@ -7,6 +7,7 @@ let sitterId = urlParams.get('sitterId');
 let productionServer = window.location.hostname.indexOf("localhost") === -1
 
 let peer
+let portraitHistory
 
 if (productionServer) {
 	peer = new Peer(sitterId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
@@ -34,6 +35,13 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 			}
 		});
 	});
+	peer.on('connection', (conn) => {
+		console.log("first level")
+		conn.on('data', (portraitHist) => {
+			portraitHistory = portraitHist
+			console.log("portraitHistoryArray:"+portraitHistory)
+		})
+	})
 });
 
 const savePortrait = () => {
