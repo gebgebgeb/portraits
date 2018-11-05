@@ -3,16 +3,11 @@ let ctx = c.getContext('2d')
 const videoOfSitter = document.getElementById("videoOfSitter")
 const saveButton = document.getElementById('saveButton')
 
-let urlParams = new URLSearchParams(window.location.search)
-let sitterId = urlParams.get('sitterId')
-let drawerId = urlParams.get('drawerId')
-
 const portraitHistory = {
 	'canvasWidth': null,
 	'canvasHeight': null,
 	'mousePositionArray': []
 }
-
 
 let productionServer = window.location.hostname.indexOf("localhost") === -1
 
@@ -20,42 +15,10 @@ let scaleFactor
 let videoWidth
 let videoHeight
 
-let peer
-let conn
-
-if (productionServer) {
-	peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
-} else {
-	peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
-
-}
-
-peer.on('open', function(id) {
-  console.log('My peer ID is: ' + id)
-})
-
-// peer2.on('open', function(id) {
-//   console.log('My peer ID is: ' + id)
-// })
 
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
-	// Call a peer, providing our mediaStream
-	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':'webcam'})
-	webcamCall.on('stream', function(stream) {
-		videoOfSitter.srcObject = stream
-	})
-
-	const canvasStream = c.captureStream(25)
-	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'})
-
-	peer.on('call', function(call) {
-		// Answer the call, providing our mediaStream
-		call.answer(canvasStream);
-	})
-	conn = peer.connect(sitterId)
-}).catch(function(err){
-	alert('You need a webcam to use this app, sorry!')
+	videoOfSitter.srcObject = mediaStream
 })
 
 videoOfSitter.onplaying = () => {
@@ -111,8 +74,6 @@ function mouseUpListener(evt){
 		, y: (evt.clientY-rect.top)/scaleFactor
 		, mouseUp: true 
 	})
-	conn.send(portraitHistory)
-	console.log("should have sent")
 }
 
 function drawStroke(evt){

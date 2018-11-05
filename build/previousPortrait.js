@@ -17,7 +17,7 @@ const draw = (mousePositionArray, mousePosIdx) => {
 		ctx.stroke()
 	}
 	if(mousePosIdx < mousePositionArray.length - 1){
-		setTimeout(()=>draw(mousePositionArray, mousePosIdx + 1), 100)
+		setTimeout(()=>draw(mousePositionArray, mousePosIdx + 1), 40)
 	}
 }
 

@@ -42,6 +42,8 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 			console.log("portraitHistoryArray:"+portraitHistory)
 		})
 	})
+}).catch(function(err){
+	alert('You need a webcam to use this app, sorry!')
 });
 
 const savePortrait = () => {
