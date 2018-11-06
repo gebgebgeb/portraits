@@ -107,7 +107,8 @@ const peerServerOptions = {
 }
 const peerserver = ExpressPeerServer(server, peerServerOptions);
 
-peerserver.on('connection', function(id) { 
+peerserver.on('connection', function(id) {
+	console.log('connection') 
 	if (allDrawerIds.includes(parseInt(id))) {
 		drawerIdsForGodViews.push(parseInt(id))
 		console.log("drawer connected: "+id)
@@ -131,6 +132,9 @@ peerserver.on('disconnect', function(s_id) {
   	var index = drawerIdsForGodViews.indexOf(id);
 	if (index > -1) {
   		drawerIdsForGodViews.splice(index, 1);
+  	}
+  	if (id === lastSitterId) {
+  		lastSitterId = null
   	}						
 })
 

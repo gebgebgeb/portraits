@@ -1,5 +1,6 @@
 const videoOfDrawer = document.getElementById('videoOfDrawer')
 const videoOfDrawerCanvas = document.getElementById('videoOfDrawerCanvas')
+const loader = document.getElementById('loader')
 
 let urlParams = new URLSearchParams(window.location.search);
 let sitterId = urlParams.get('sitterId');
@@ -25,13 +26,13 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	peer.on('call', function(call) {
 		// Answer the call, providing our mediaStream
 		call.answer(mediaStream);
-		
 		call.on('stream', function(stream) {
 			if(call.metadata.type == 'webcam'){
 				videoOfDrawer.srcObject = stream
 			}
 			if(call.metadata.type == 'canvas'){
 				videoOfDrawerCanvas.srcObject = stream
+				document.body.removeChild(loader)
 			}
 		});
 	});
