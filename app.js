@@ -53,8 +53,13 @@ app.get("/friendpairs", (req, res) => {
 	res.send({'sitterId': sitterId, 'drawerId': drawerId})
 });
 
+app.get("/previousportraits", (req, res) => {
+	Portrait.findOne(req.query, (err, entry) => {
+		res.send(entry)
+	})
+});
+
 app.get("/previousportrait", (req, res) => {
-	console.log(req.query)
 	Portrait.findOne(req.query, (err, entry) => {
 		res.send(entry)
 	})
@@ -64,7 +69,6 @@ app.get("/previousportrait", (req, res) => {
 let lastSitterId = null
 
 app.get("/nextAvailablePage", (req, res) => {
-	console.log(lastSitterId)
 	if(lastSitterId === null){
 		lastSitterId = generateId()
 		allSitterIds.push(lastSitterId)

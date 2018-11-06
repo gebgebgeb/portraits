@@ -41,13 +41,15 @@ peer.on('open', function(id) {
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
 	// Call a peer, providing our mediaStream
-	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':'webcam'})
+	const webcamCall = peer.call(sitterId, mediaStream, {'metadata':{'type': 'webcam'}})
 	webcamCall.on('stream', function(stream) {
 		videoOfSitter.srcObject = stream
 	})
 
+	sessionId = String((new Date()).getTime()) + sitterId + drawerId
+	portraitHistory.sessionId = sessionId
 	const canvasStream = c.captureStream(25)
-	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':'canvas'})
+	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':{'type': 'canvas', 'id': sessionId}})
 
 	peer.on('call', function(call) {
 		// Answer the call, providing our mediaStream

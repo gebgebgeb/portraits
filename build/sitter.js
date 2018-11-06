@@ -27,10 +27,10 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		call.answer(mediaStream);
 		
 		call.on('stream', function(stream) {
-			if(call.metadata == 'webcam'){
+			if(call.metadata.type == 'webcam'){
 				videoOfDrawer.srcObject = stream
 			}
-			if(call.metadata == 'canvas'){
+			if(call.metadata.type == 'canvas'){
 				videoOfDrawerCanvas.srcObject = stream
 			}
 		});
