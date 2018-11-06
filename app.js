@@ -22,7 +22,8 @@ let portraitSchema = new mongoose.Schema({
 	canvasHeight: Number,
 	canvasWidth: Number,
 	mousePositionArray: Array,
-	sessionId: String
+	sessionId: String,
+	time : { type : Date, default: Date.now }
 })
 
 let Portrait = mongoose.model('Portrait', portraitSchema)
@@ -55,7 +56,7 @@ app.get("/friendpairs", (req, res) => {
 });
 
 app.get("/previousportraits", (req, res) => {
-	Portrait.find({}).limit(200).exec( (err, entries) => {
+	Portrait.find({}).limit(200).sort('-time').exec( (err, entries) => {
 		let previousPortraitsArray = []
 		let existingPortraitIds = []
 		for (entry of entries) {
@@ -65,7 +66,7 @@ app.get("/previousportraits", (req, res) => {
 				existingPortraitIds.push(entry.sessionId)
 				previousPortraitsArray.push(entry)
 			} 
-			if (existingPortraitIds.length === 10) {
+			if (existingPortraitIds.length === 12) {
 				break
 			}
 		}

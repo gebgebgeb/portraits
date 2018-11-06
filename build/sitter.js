@@ -44,7 +44,11 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		})
 	})
 }).catch(function(err){
-	alert('You need a webcam to use this app, sorry!')
+	if (err === "DOMException: Requested device not found") {
+		alert('You need a webcam to use this app, sorry!')
+	} else {
+		alert('Sorry! Something went wrong :(')
+	}
 });
 
 const savePortrait = () => {

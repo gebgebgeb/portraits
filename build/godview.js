@@ -5,13 +5,12 @@ const row = document.getElementById('videoTable')
 
 let productionServer = window.location.hostname.indexOf("localhost") === -1
 
-let peer
+let sessionIds = []
 
 const draw = (canvas, mousePositionArray, mousePosIdx) => {
 	let ctx = canvas.getContext('2d')
 	let lastMousePos = mousePositionArray[mousePosIdx-1]
 	let mousePos = mousePositionArray[mousePosIdx]
-	console.log(mousePos.mouseUp)
 	if(!lastMousePos.mouseUp){
 		ctx.beginPath()
 		ctx.moveTo(lastMousePos.x, lastMousePos.y)
@@ -35,15 +34,38 @@ axios.get('/previousportraits').then((response)=>{
 	for(pastPortrait of response.data){
 		videos.push(document.createElement("canvas"))
 		col = document.createElement('div')
-		col.className = 'col-4'
+		col.className = 'col-3'
 		videos[videos.length-1].width = pastPortrait.canvasWidth
 		videos[videos.length-1].height = pastPortrait.canvasHeight
 		videos[videos.length-1].className = 'godViewCanvas'
+		sessionIds.push(pastPortrait.sessionId)
 		col.appendChild(videos[videos.length-1])
 		row.appendChild(col)
 		draw(videos[videos.length-1], pastPortrait.mousePositionArray, 1)
 	}
 })
+
+setInterval(()=>{
+	axios.get('/previousportraits').then((response)=>{
+		for(pastPortrait of response.data) {
+			if (sessionIds.includes(pastPortrait.sessionId)) {
+				continue
+			} else {
+				videos.push(document.createElement("canvas"))
+				col = document.createElement('div')
+				col.className = 'col-3'
+				videos[videos.length-1].width = pastPortrait.canvasWidth
+				videos[videos.length-1].height = pastPortrait.canvasHeight
+				videos[videos.length-1].className = 'godViewCanvas'
+				sessionIds.push(pastPortrait.sessionId)
+				col.appendChild(videos[videos.length-1])
+				row.prepend(col)
+				draw(videos[videos.length-1], pastPortrait.mousePositionArray, 1)
+			}
+		}
+	})
+
+}, 10000)
 
 // 	let godViewId = response.data.godViewId
 // 	let drawerIds = response.data.allDrawerIds
