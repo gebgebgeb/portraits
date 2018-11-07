@@ -25,6 +25,11 @@
 	position: absolute;
 }
 
+#logo {
+	z-index:2;
+	width:100%;
+}
+
 #saveDrawing{
 	z-index: 3;
 	position: absolute;

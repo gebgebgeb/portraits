@@ -7,7 +7,6 @@ const ctx = previousCanvas.getContext('2d')
 const draw = (mousePositionArray, mousePosIdx) => {
 	let lastMousePos = mousePositionArray[mousePosIdx-1]
 	let mousePos = mousePositionArray[mousePosIdx]
-	console.log(mousePos.mouseUp)
 	if(!lastMousePos.mouseUp){
 		ctx.beginPath()
 		ctx.moveTo(lastMousePos.x, lastMousePos.y)
@@ -25,5 +24,8 @@ axios.get('/previousportrait', {params:{_id: portraitId}}).then((response)=>{
 	previousCanvas.width = response.data.canvasWidth
 	previousCanvas.height = response.data.canvasHeight
 	draw(response.data.mousePositionArray, 1)
+	console.log(JSON.stringify(response.data.mousePositionArray))
 })
+
+
 

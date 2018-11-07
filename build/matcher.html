@@ -5,9 +5,11 @@
 	</head>
 <body>
 	<div class='container-fluid mt-5' id='interaction'>
-		<h1 class='text-center'>
-			Fun Portraits App
-		</h1>
+		<div class='row'>
+			<div class='col-4 offset-4'>
+				<canvas id='logo' width=640 height=250></canvas>
+			</div>
+		</div>
 		<div class='row mt-3'>
 			<div class='col-4'>
 				<div class='card'>
@@ -65,7 +67,8 @@
 	<div class='row' id='videoTable'></div>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="logo.js"></script>	
 	<script src="matcher.js"></script>
-	<script src='godview.js'></script>	
+	<script src='godview.js'></script>
 </body>
 </html>

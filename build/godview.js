@@ -15,7 +15,7 @@ const draw = (canvas, mousePositionArray, mousePosIdx) => {
 		ctx.beginPath()
 		ctx.moveTo(lastMousePos.x, lastMousePos.y)
 		ctx.lineTo(mousePos.x, mousePos.y)
-		ctx.lineWidth = 1
+		ctx.lineWidth = 2
 		ctx.strokeStyle = '#009900'
 		ctx.stroke()
 	}
