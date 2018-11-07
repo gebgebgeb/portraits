@@ -4,7 +4,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	</head>
 <body>
-	<div class='container-fluid mt-5'>
+	<div class='container-fluid mt-5' id='interaction'>
 		<h1 class='text-center'>
 			Fun Portraits App
 		</h1>
@@ -15,9 +15,9 @@
 						<h5 class="card-title">If you would like to draw or be drawn by a stranger:</h5>
 						<p class="card-text">Click this link and wait! If you're sent to drawer.html, you may need to refresh your page if nothing happens after a moment.</p>
 						<a href="/nextAvailablePage" class="btn btn-primary">Click me!</a>
-					</div>
-				</div>
-			</div>
+					</div> <!-- card-body -->
+				</div> <!-- card -->
+			</div> <!-- col -->
 			<div class='col-2'>
 				<div class='card'>
 					<div class="card-body">
@@ -35,35 +35,37 @@
 						</ol>
 						<a id='sitterLink' class="btn btn-primary">Sitter Link</a>
 						<a id='drawerLink' class="btn btn-primary">Drawer Link</a>
-					</div>
-				</div>
-			</div>
+					</div> <!-- card-body -->
+				</div> <!-- card -->
+			</div> <!-- col -->
 			<div class='col-2'>
 				<div class='card'>
 					<div class="card-body">
 						<h5 class="card-title">If you would like to draw yourself:</h5>
 						<p class="card-text">Click this link!</p>
 						<a href="/selfPortrait.html" class="btn btn-primary">Click me!</a>
-					</div>
-				</div>
-			</div>
-		</div>
+					</div> <!-- card-body -->
+				</div> <!-- card -->
+			</div> <!-- col -->
+		</div> <!-- row -->
+
+
 		<div class="footer">
 			<div class="container">
 			<p>
-				<a href="/godview.html">god view</a>
-			</p>
-			<p>
 				<a href="mailto:davidgeorgeportraits@gmail.com?Subject=Feedback">Send feedback</a> 
 				to davidgeorgeportraits@gmail.com
-			</p>
-			<p>
+				| 
 				<a href="https://github.com/gebgebgeb/portraits">Source code</a> 
 			</p>
 			</div>
 		</div>
+	</div>
+
+	<div class='row' id='videoTable'></div>
 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="matcher.js"></script>
+	<script src='godview.js'></script>	
 </body>
 </html>

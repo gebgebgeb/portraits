@@ -38,6 +38,16 @@
 	margin-left: 200px;
 }
 
+#interaction{
+	z-index:2;
+	position:absolute;
+}
+
+#videoTable{
+	z-index:1;
+	position:absolute;
+}
+
 .godViewCanvas{
 	width: 100%;
 }

@@ -34,7 +34,7 @@ axios.get('/previousportraits').then((response)=>{
 	for(pastPortrait of response.data){
 		videos.push(document.createElement("canvas"))
 		col = document.createElement('div')
-		col.className = 'col-3'
+		col.className = 'col-2'
 		videos[videos.length-1].width = pastPortrait.canvasWidth
 		videos[videos.length-1].height = pastPortrait.canvasHeight
 		videos[videos.length-1].className = 'godViewCanvas'
@@ -53,7 +53,7 @@ setInterval(()=>{
 			} else {
 				videos.push(document.createElement("canvas"))
 				col = document.createElement('div')
-				col.className = 'col-3'
+				col.className = 'col-2'
 				videos[videos.length-1].width = pastPortrait.canvasWidth
 				videos[videos.length-1].height = pastPortrait.canvasHeight
 				videos[videos.length-1].className = 'godViewCanvas'
