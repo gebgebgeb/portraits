@@ -6,9 +6,13 @@ const port = process.env.PORT || 9000;
 const app = express();
 const server = app.listen(port);
 
+bodyParser = {
+  json: {limit: '50mb', extended: true},
+  urlencoded: {limit: '50mb', extended: true}
+};
+
 app.use(express.static('build'))
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser);
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portraithistories')
 

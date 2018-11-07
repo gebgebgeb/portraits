@@ -91,6 +91,7 @@ function drawStroke(evt){
 }
 
 const savePortrait = () => {
+	console.log(portraitHistory)
 	axios.post('/saveportrait', portraitHistory).then((response)=>{
 		window.open('/previousPortrait.html?id='+response.data)
 	})
