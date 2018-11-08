@@ -1,18 +1,15 @@
 const express = require("express");
-let bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const mongoose = require('mongoose')
 
 const port = process.env.PORT || 9000;
 const app = express();
 const server = app.listen(port);
 
-bodyParser = {
-  json: {limit: '50mb', extended: true},
-  urlencoded: {limit: '50mb', extended: true}
-};
 
 app.use(express.static('build'))
-app.use(bodyParser);
+app.use(bodyParser.json({limit: '50mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portraithistories')
 
