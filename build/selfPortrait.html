@@ -6,7 +6,11 @@
 		<video autoplay playsinline id='videoOfSitter'></video>
 		<canvas id='drawerCanvas'></canvas>
 		<button id='saveDrawing' onclick="savePortrait()">Save Drawing</button>
+		<div id='colorPicker'>
+			Color: <input onchange="update(this.jscolor)" class="jscolor" value="009900">
+		</div>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src='selfPortrait.js'></script>
+		<script src="jscolor.js"></script>
 	</body>
 </html>

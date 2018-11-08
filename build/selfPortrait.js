@@ -2,6 +2,7 @@ let c = document.getElementById('drawerCanvas')
 let ctx = c.getContext('2d')
 const videoOfSitter = document.getElementById("videoOfSitter")
 const saveButton = document.getElementById('saveButton')
+let currentStrokeColor = '#009900'
 
 const portraitHistory = {
 	'canvasWidth': null,
@@ -52,6 +53,7 @@ function getMousePos(evt) {
 		x: (evt.clientX - rect.left)/scaleFactor
 		, y: (evt.clientY-rect.top)/scaleFactor
 		, mouseUp: false
+		, color: currentStrokeColor
 	})
 	return {
 		x: (evt.clientX - rect.left) / scaleFactor
@@ -72,7 +74,8 @@ function mouseUpListener(evt){
 	portraitHistory.mousePositionArray.push({
 		x: (evt.clientX - rect.left)/scaleFactor
 		, y: (evt.clientY-rect.top)/scaleFactor
-		, mouseUp: true 
+		, mouseUp: true
+		, color: currentStrokeColor 
 	})
 }
 
@@ -83,7 +86,7 @@ function drawStroke(evt){
 		ctx.moveTo(lastMousePos.x, lastMousePos.y)
 		ctx.lineTo(mousePos.x, mousePos.y)
 		ctx.lineWidth = 1
-		ctx.strokeStyle = '#009900'
+		ctx.strokeStyle = currentStrokeColor
 		ctx.stroke()
 
 		lastMousePos = mousePos
@@ -95,5 +98,9 @@ const savePortrait = () => {
 	axios.post('/saveportrait', portraitHistory).then((response)=>{
 		window.open('/previousPortrait.html?id='+response.data)
 	})
+}
+
+const update = (jscolor) => {
+    currentStrokeColor = '#' + jscolor
 }
 

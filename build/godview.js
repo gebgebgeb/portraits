@@ -16,7 +16,7 @@ const draw = (canvas, mousePositionArray, mousePosIdx) => {
 		ctx.moveTo(lastMousePos.x, lastMousePos.y)
 		ctx.lineTo(mousePos.x, mousePos.y)
 		ctx.lineWidth = 2
-		ctx.strokeStyle = '#009900'
+		ctx.strokeStyle = mousePositionArray[mousePosIdx-1].color
 		ctx.stroke()
 	}
 	if(mousePosIdx < mousePositionArray.length - 1){
