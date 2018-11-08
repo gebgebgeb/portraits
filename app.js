@@ -67,7 +67,7 @@ app.get("/previousportraits", (req, res) => {
 				existingPortraitIds.push(entry.sessionId)
 				previousPortraitsArray.push(entry)
 			} 
-			if (existingPortraitIds.length === 36) {
+			if (existingPortraitIds.length === 144) {
 				break
 			}
 		}

@@ -2,10 +2,12 @@ let c = document.getElementById('drawerCanvas')
 let ctx = c.getContext('2d')
 const videoOfSitter = document.getElementById("videoOfSitter")
 const saveButton = document.getElementById('saveButton')
+// const colorPicker = document.getElementById('colorPicker')
 
 let urlParams = new URLSearchParams(window.location.search)
 let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
+let currentStrokeColor = '#009900'
 
 const portraitHistory = {
 	'canvasWidth': null,
@@ -95,6 +97,7 @@ function getMousePos(evt) {
 		x: (evt.clientX - rect.left)/scaleFactor
 		, y: (evt.clientY-rect.top)/scaleFactor
 		, mouseUp: false
+		, color: currentStrokeColor
 	})
 	return {
 		x: (evt.clientX - rect.left) / scaleFactor
@@ -115,10 +118,15 @@ function mouseUpListener(evt){
 	portraitHistory.mousePositionArray.push({
 		x: (evt.clientX - rect.left)/scaleFactor
 		, y: (evt.clientY-rect.top)/scaleFactor
-		, mouseUp: true 
+		, mouseUp: true
+		, color: currentStrokeColor 
 	})
 	conn.send(portraitHistory)
-	console.log("should have sent")
+}
+
+const update = (jscolor) => {
+    // 'jscolor' instance can be used as a string
+    currentStrokeColor = '#' + jscolor
 }
 
 function drawStroke(evt){
@@ -128,7 +136,11 @@ function drawStroke(evt){
 		ctx.moveTo(lastMousePos.x, lastMousePos.y)
 		ctx.lineTo(mousePos.x, mousePos.y)
 		ctx.lineWidth = 1
-		ctx.strokeStyle = '#009900'
+
+		// console.log('colorPicker: '+colorPicker)
+		// console.log('colorPicker.value: '+colorPicker.value)
+		
+		ctx.strokeStyle = currentStrokeColor
 		ctx.stroke()
 
 		lastMousePos = mousePos

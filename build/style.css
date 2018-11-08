@@ -36,6 +36,14 @@
 	height:100px;
 }
 
+#colorPicker{
+	z-index: 3;
+	position: absolute;
+	height:100px;
+	margin-left: 120px;
+	margin-top: 20px;
+}
+
 #saveDrawingSitter{
 	z-index: 3;
 	position: absolute;
