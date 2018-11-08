@@ -9,6 +9,9 @@ const portraitHistory = {
 	'mousePositionArray': []
 }
 
+const sessionId = String((new Date()).getTime()) + 'self'
+portraitHistory.sessionId = sessionId
+
 let productionServer = window.location.hostname.indexOf("localhost") === -1
 
 let scaleFactor

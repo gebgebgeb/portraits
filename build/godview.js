@@ -46,6 +46,7 @@ axios.get('/previousportraits').then((response)=>{
 })
 
 setInterval(()=>{
+	console.log('hello')
 	axios.get('/previousportraits').then((response)=>{
 		for(pastPortrait of response.data) {
 			if (sessionIds.includes(pastPortrait.sessionId)) {
