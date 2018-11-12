@@ -20,7 +20,7 @@ const draw = (canvas, mousePositionArray, mousePosIdx) => {
 		ctx.stroke()
 	}
 	if(mousePosIdx < mousePositionArray.length - 1){
-		setTimeout(()=>draw(canvas, mousePositionArray, mousePosIdx + 1), 50)
+		setTimeout(()=>draw(canvas, mousePositionArray, mousePosIdx + 1), 25)
 	}else{
 		setTimeout(()=>{
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
