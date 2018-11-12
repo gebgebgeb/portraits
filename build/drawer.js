@@ -148,8 +148,12 @@ function drawStroke(evt){
 }
 
 const savePortrait = () => {
-	axios.post('/saveportrait', portraitHistory).then((response)=>{
-		window.open('/previousPortrait.html?id='+response.data)
-	})
+	if(portraitHistory.mousePositionArray.length > 20){
+		axios.post('/saveportrait', portraitHistory).then((response)=>{
+			window.open('/previousPortrait.html?id='+response.data)
+		})
+	}else{
+		alert('Please draw some more!')
+	}
 }
 

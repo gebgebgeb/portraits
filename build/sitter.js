@@ -52,7 +52,12 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 });
 
 const savePortrait = () => {
-	axios.post('/saveportrait', portraitHistory).then((response)=>{
-		window.open('/previousPortrait.html?id='+response.data)
-	})
+	if(portraitHistory.mousePositionArray.length > 20){
+		axios.post('/saveportrait', portraitHistory).then((response)=>{
+			window.open('/previousPortrait.html?id='+response.data)
+		})
+	}else{
+		alert('Please wait for more to be drawn!')
+	}
 }
+
