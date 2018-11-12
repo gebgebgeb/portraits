@@ -36,7 +36,7 @@ axios.get('/previousportraits').then((response)=>{
 		col = document.createElement('div')
 		col.className = 'col-2'
 		videos[videos.length-1].width = pastPortrait.canvasWidth
-		videos[videos.length-1].height = pastPortrait.canvasHeight
+		videos[videos.length-1].height = pastPortrait.canvasWidth*(480/640)
 		videos[videos.length-1].className = 'godViewCanvas'
 		sessionIds.push(pastPortrait.sessionId)
 		col.appendChild(videos[videos.length-1])
