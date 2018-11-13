@@ -11,7 +11,7 @@
 }
 
 #drawerCanvas{
-	border:1px solid #000000;
+	/* border:1px solid #000000; */
 	height:100%;
 	z-index: 2;
 	position: absolute;
@@ -19,7 +19,7 @@
 }
 
 #videoOfDrawerCanvas{
-	border:1px solid #000000;
+	/* border:1px solid #000000; */
 	height: 100%;
 	z-index: 1;
 	position: absolute;
@@ -33,22 +33,23 @@
 #saveDrawing{
 	z-index: 3;
 	position: absolute;
-	height:100px;
+	margin-top: 15px;
+	margin-left: 10px;
 }
 
 #colorPicker{
 	z-index: 3;
 	position: absolute;
 	height:100px;
-	margin-left: 120px;
+	margin-left: 130px;
 	margin-top: 20px;
 }
 
 #saveDrawingSitter{
 	z-index: 3;
 	position: absolute;
-	height:100px;
-	margin-left: 200px;
+	margin-left: 220px;
+	margin-top: 20px;
 }
 
 #interaction{
@@ -59,6 +60,35 @@
 #videoTable{
 	z-index:1;
 	position:absolute;
+}
+
+.greyBackground{
+	background-color: #202020;
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+	margin-left: -60px;
+	margin-top: -60px;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #885ead; /* Green? */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+.loadingText {
+	z-index: 1;
+	position: absolute;
+	margin-left: 40px;
+	margin-top: 30px;
+	color:#FFFFFF;
 }
 
 .btn-primary {
@@ -75,15 +105,6 @@
     bottom: 0;
     width: 100%;
     text-align: center;
-}
-
-.loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #009900; /* Green? */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
 }
 
 
