@@ -19,7 +19,7 @@ const drawLogo = (canvas, mousePositionArray, mousePosIdx) => {
 		ctx.moveTo(lastMousePos.x, lastMousePos.y - 50)
 		ctx.lineTo(mousePos.x, mousePos.y - 50)
 		ctx.lineWidth = 4
-		ctx.strokeStyle = '#009900'
+		ctx.strokeStyle = '#000000'
 		ctx.stroke()
 	}
 	if(mousePosIdx < mousePositionArray.length - 1){
