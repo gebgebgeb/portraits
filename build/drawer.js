@@ -6,23 +6,16 @@ const saveButton = document.getElementById('saveButton')
 let urlParams = new URLSearchParams(window.location.search)
 let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
-let currentStrokeColor = '#885ead'
-
-const portraitHistory = {
-	'canvasWidth': null,
-	'canvasHeight': null,
-	'mousePositionArray': []
-}
-
 
 let productionServer = window.location.hostname.indexOf('localhost') === -1
 
-let scaleFactor
 let videoWidth
 let videoHeight
 
 let peer
 let conn
+
+drawingListener = new DrawingListener(c)
 
 if (productionServer) {
 	peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
@@ -44,7 +37,7 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	})
 
 	sessionId = String((new Date()).getTime()) + sitterId + drawerId
-	portraitHistory.sessionId = sessionId
+	drawingListener.portraitHistory.sessionId = sessionId
 	const canvasStream = c.captureStream(25)
 	const canvasCall = peer.call(sitterId, canvasStream, {'metadata':{'type': 'canvas', 'id': sessionId}})
 
@@ -69,82 +62,30 @@ videoOfSitter.onplaying = () => {
 	scaleFactor = window.innerHeight / videoHeight
 	ctx.fillStyle='white'
 	ctx.fillRect(0, 0, c.width, c.height)
-	portraitHistory.canvasWidth = videoWidth
-	portraitHistory.canvasHeight = videoHeight
+	drawingListener.portraitHistory.canvasWidth = videoWidth
+	drawingListener.portraitHistory.canvasHeight = videoHeight
 }
+
 
 document.body.onresize = () => {
-	scaleFactor = window.innerHeight / videoHeight
-}
-
-//Drawing functions
-let mouseDown = false
-let lastMousePos
-
-c.addEventListener('mousedown', mouseDownListener)
-c.addEventListener('mouseup', mouseUpListener)
-c.addEventListener('mousemove', drawStroke)
-
-function getMousePos(evt) {
-	let rect = c.getBoundingClientRect()
-	// let scaleFactor = window.innerHeight / videoHeight
-	portraitHistory.mousePositionArray.push({
-		x: (evt.clientX - rect.left)/scaleFactor
-		, y: (evt.clientY-rect.top)/scaleFactor
-		, mouseUp: false
-		, color: currentStrokeColor
-	})
-	return {
-		x: (evt.clientX - rect.left) / scaleFactor
-		, y: (evt.clientY - rect.top) / scaleFactor
-	}
-}
-
-function mouseDownListener(evt){
-	let c = document.getElementById('canvas')
-	mouseDown = true
-	lastMousePos = getMousePos(evt)
-}
-
-function mouseUpListener(evt){
-	mouseDown = false  
-	let rect = c.getBoundingClientRect()
-	let scaleFactor = window.innerHeight / videoHeight
-	portraitHistory.mousePositionArray.push({
-		x: (evt.clientX - rect.left)/scaleFactor
-		, y: (evt.clientY-rect.top)/scaleFactor
-		, mouseUp: true
-		, color: currentStrokeColor 
-	})
-	conn.send(portraitHistory)
+	drawingListener.setScaleFactor(window.innerHeight / videoHeight)
 }
 
 const update = (jscolor) => {
-    // 'jscolor' instance can be used as a string
-    currentStrokeColor = '#' + jscolor
+	// 'jscolor' instance can be used as a string
+	drawingListener.setStrokeColor(jscolor)
 }
 
-function drawStroke(evt){
-	if (mouseDown) {
-		const mousePos = getMousePos(evt)
-		ctx.beginPath()
-		ctx.moveTo(lastMousePos.x, lastMousePos.y)
-		ctx.lineTo(mousePos.x, mousePos.y)
-		ctx.lineWidth = 1
-
-		// console.log('colorPicker: '+colorPicker)
-		// console.log('colorPicker.value: '+colorPicker.value)
-		
-		ctx.strokeStyle = currentStrokeColor
-		ctx.stroke()
-
-		lastMousePos = mousePos
-	}
-}
+c.addEventListener('mousedown', drawingListener.mouseDownListener)
+c.addEventListener('mouseup', (evt) => {
+	drawingListener.mouseUpListener(evt)
+	conn.send(drawingListener.portraitHistory)
+})
+c.addEventListener('mousemove', drawingListener.mouseMoveListener)
 
 const savePortrait = () => {
-	if(portraitHistory.mousePositionArray.length > 20){
-		axios.post('/saveportrait', portraitHistory).then((response)=>{
+	if(drawingListener.portraitHistory.mousePositionArray.length > 20){
+		axios.post('/saveportrait', drawingListener.portraitHistory).then((response)=>{
 			window.open('/previousPortrait.html?id='+response.data)
 		})
 	}else{
