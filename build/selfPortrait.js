@@ -2,7 +2,7 @@ let c = document.getElementById('drawerCanvas')
 let ctx = c.getContext('2d')
 const videoOfSitter = document.getElementById("videoOfSitter")
 const saveButton = document.getElementById('saveButton')
-let currentStrokeColor = '#009900'
+let currentStrokeColor = '#885ead'
 
 const portraitHistory = {
 	'canvasWidth': null,

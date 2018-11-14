@@ -3,12 +3,12 @@
 		<link rel='stylesheet' type='text/css' href='style.css'>
 		<link rel="stylesheet" href='bootstrap.css'>
 	</head>
-	<body>
+	<body class='greyBackground'>
 		<video autoplay playsinline id='videoOfSitter'></video>
 		<canvas id='drawerCanvas'></canvas>
-		<button id='saveDrawing' onclick="savePortrait()">Save Drawing</button>
+		<button id='saveDrawing' onclick="savePortrait()" class='btn btn-primary'>Save Drawing</button>
 		<div id='colorPicker'>
-			Color: <input onchange="update(this.jscolor)" class="jscolor" value="009900">
+			Color: <input onchange="update(this.jscolor)" class="jscolor" value="885ead">
 		</div>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js'></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>

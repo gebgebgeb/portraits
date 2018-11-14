@@ -6,7 +6,7 @@ const saveButton = document.getElementById('saveButton')
 let urlParams = new URLSearchParams(window.location.search)
 let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
-let currentStrokeColor = '#009900'
+let currentStrokeColor = '#885ead'
 
 const portraitHistory = {
 	'canvasWidth': null,
