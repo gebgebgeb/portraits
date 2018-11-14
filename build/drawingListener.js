@@ -14,9 +14,6 @@ class DrawingListener{
 		this.mouseDownListener = this.mouseDownListener.bind(this)
 		this.mouseUpListener = this.mouseUpListener.bind(this)
 		this.mouseMoveListener = this.mouseMoveListener.bind(this)
-		c.addEventListener('mousedown', this.mouseDownListener)
-		c.addEventListener('mouseup', this.mouseUpListener)
-		c.addEventListener('mousemove', this.mouseMoveListener)
 	}
 
 	getAndStoreMousePos(evt, mouseUpBool) {
@@ -28,6 +25,7 @@ class DrawingListener{
 			, mouseUp: mouseUpBool
 			, color: this.currentStrokeColor 
 		})
+		console.log('get and store')
 		return {
 			x: (evt.clientX - rect.left) / this.scaleFactor
 			, y: (evt.clientY - rect.top) / this.scaleFactor
@@ -37,12 +35,14 @@ class DrawingListener{
 	mouseDownListener(evt){
 		this.mouseDown = true
 		this.lastMousePos = this.getAndStoreMousePos(evt, false)
+		console.log('mouse down')
+
 	}
 
 	mouseUpListener(evt){
 		this.mouseDown = false  
 		this.getAndStoreMousePos(evt, true)
-		conn.send(this.portraitHistory) // FIXME unencapsulate
+		//conn.send(this.portraitHistory) // FIXME unencapsulate
 	}
 
 	mouseMoveListener(evt){
@@ -59,6 +59,7 @@ class DrawingListener{
 
 			this.lastMousePos = mousePos
 		}
+		console.log('mose move')
 	}
 
 	setStrokeColor(jscolor){

@@ -24,7 +24,6 @@ axios.get('/previousportrait', {params:{_id: portraitId}}).then((response)=>{
 	previousCanvas.width = response.data.canvasWidth
 	previousCanvas.height = response.data.canvasHeight
 	draw(response.data.mousePositionArray, 1)
-	console.log(JSON.stringify(response.data.mousePositionArray))
 })
 
 

@@ -37,10 +37,8 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		});
 	});
 	peer.on('connection', (conn) => {
-		console.log("first level")
 		conn.on('data', (portraitHist) => {
 			portraitHistory = portraitHist
-			console.log("portraitHistoryArray:"+portraitHistory)
 		})
 	})
 }).catch(function(err){

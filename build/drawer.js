@@ -59,7 +59,7 @@ videoOfSitter.onplaying = () => {
 	videoHeight = videoOfSitter.videoHeight
 	c.width = videoWidth
 	c.height = videoHeight
-	scaleFactor = window.innerHeight / videoHeight
+	drawingListener.scaleFactor = window.innerHeight / videoHeight
 	ctx.fillStyle='white'
 	ctx.fillRect(0, 0, c.width, c.height)
 	drawingListener.portraitHistory.canvasWidth = videoWidth
@@ -92,4 +92,3 @@ const savePortrait = () => {
 		alert('Please draw some more!')
 	}
 }
-

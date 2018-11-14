@@ -9,8 +9,6 @@
  *
  * See usage examples at http://jscolor.com/examples/
  */
-
-
 "use strict";
 
 

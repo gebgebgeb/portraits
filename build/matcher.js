@@ -6,8 +6,8 @@ axios.get('/friendpairs').then((response)=>{
 	let sitterId = response.data.sitterId
 	let drawerId = response.data.drawerId
 
-	sitterLink.href = "sitter.html?sitterId="+sitterId
-	drawerLink.href = "drawer.html?drawerId="+drawerId+"&sitterId="+sitterId
+	// sitterLink.href = "sitter.html?sitterId="+sitterId
+	// drawerLink.href = "drawer.html?drawerId="+drawerId+"&sitterId="+sitterId
 })
 
 const drawLogo = (canvas, mousePositionArray, mousePosIdx) => {
