@@ -1,8 +1,7 @@
 let c = document.getElementById('drawerCanvas')
 let ctx = c.getContext('2d')
-const videoOfSitter = document.getElementById("videoOfSitter")
+const videoOfSitter = document.getElementById('videoOfSitter')
 const saveButton = document.getElementById('saveButton')
-// const colorPicker = document.getElementById('colorPicker')
 
 let urlParams = new URLSearchParams(window.location.search)
 let sitterId = urlParams.get('sitterId')
@@ -16,7 +15,7 @@ const portraitHistory = {
 }
 
 
-let productionServer = window.location.hostname.indexOf("localhost") === -1
+let productionServer = window.location.hostname.indexOf('localhost') === -1
 
 let scaleFactor
 let videoWidth
@@ -35,10 +34,6 @@ if (productionServer) {
 peer.on('open', function(id) {
   console.log('My peer ID is: ' + id)
 })
-
-// peer2.on('open', function(id) {
-//   console.log('My peer ID is: ' + id)
-// })
 
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
@@ -59,7 +54,7 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 	})
 	conn = peer.connect(sitterId)
 }).catch(function(err){
-	if (err === "DOMException: Requested device not found") {
+	if (err === 'DOMException: Requested device not found') {
 		alert('You need a webcam to use this app, sorry!')
 	} else {
 		alert('Sorry! Something went wrong :(')
@@ -72,7 +67,7 @@ videoOfSitter.onplaying = () => {
 	c.width = videoWidth
 	c.height = videoHeight
 	scaleFactor = window.innerHeight / videoHeight
-	ctx.fillStyle="white"
+	ctx.fillStyle='white'
 	ctx.fillRect(0, 0, c.width, c.height)
 	portraitHistory.canvasWidth = videoWidth
 	portraitHistory.canvasHeight = videoHeight
@@ -92,7 +87,7 @@ c.addEventListener('mousemove', drawStroke)
 
 function getMousePos(evt) {
 	let rect = c.getBoundingClientRect()
-	let scaleFactor = window.innerHeight / videoHeight
+	// let scaleFactor = window.innerHeight / videoHeight
 	portraitHistory.mousePositionArray.push({
 		x: (evt.clientX - rect.left)/scaleFactor
 		, y: (evt.clientY-rect.top)/scaleFactor
