@@ -7,22 +7,13 @@ let urlParams = new URLSearchParams(window.location.search)
 let sitterId = urlParams.get('sitterId')
 let drawerId = urlParams.get('drawerId')
 
-let productionServer = window.location.hostname.indexOf('localhost') === -1
-
 let videoWidth
 let videoHeight
 
-let peer
+let peer = initializePeer(drawerId)
 let conn
 
 drawingListener = new DrawingListener(c)
-
-if (productionServer) {
-	peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:1})
-} else {
-	peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:1})
-
-}
 
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
