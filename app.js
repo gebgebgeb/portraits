@@ -117,7 +117,7 @@ app.post('/saveportrait', (req,res) => {
 //Peer server instantiation
 const ExpressPeerServer = require('peer').ExpressPeerServer;
 const peerServerOptions = {
-  debug: true
+  debug: false
 	, key:'peerjs'
 }
 const peerserver = ExpressPeerServer(server, peerServerOptions);

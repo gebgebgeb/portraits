@@ -18,9 +18,9 @@ let conn
 drawingListener = new DrawingListener(c)
 
 if (productionServer) {
-	peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
+	peer = new Peer(drawerId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:1})
 } else {
-	peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
+	peer = new Peer(drawerId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:1})
 
 }
 

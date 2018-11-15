@@ -11,9 +11,9 @@ let peer
 let portraitHistory
 
 if (productionServer) {
-	peer = new Peer(sitterId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:3})
+	peer = new Peer(sitterId, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:1})
 } else {
-	peer = new Peer(sitterId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
+	peer = new Peer(sitterId, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:1})
 
 }
 
