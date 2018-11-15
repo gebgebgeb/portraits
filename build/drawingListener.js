@@ -28,7 +28,6 @@ class DrawingListener{
 			, mouseUp: mouseUpBool
 			, color: this.currentStrokeColor 
 		})
-		console.log('get and store')
 		return {
 			x: (evt.clientX - rect.left) / this.scaleFactor
 			, y: (evt.clientY - rect.top) / this.scaleFactor
@@ -38,8 +37,6 @@ class DrawingListener{
 	mouseDownListener(evt){
 		this.mouseDown = true
 		this.lastMousePos = this.getAndStoreMousePos(evt, false)
-		console.log('mouse down')
-
 	}
 
 	mouseUpListener(evt){

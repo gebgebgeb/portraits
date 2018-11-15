@@ -24,10 +24,6 @@ if (productionServer) {
 
 }
 
-peer.on('open', function(id) {
-  console.log('My peer ID is: ' + id)
-})
-
 navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
 	// Call a peer, providing our mediaStream

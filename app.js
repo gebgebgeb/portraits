@@ -110,7 +110,6 @@ app.post('/saveportrait', (req,res) => {
 			console.error(error);
 		} else{
 			res.send(entry.id)
-			console.log('saved!')
 		}
 	})
 })
@@ -124,10 +123,8 @@ const peerServerOptions = {
 const peerserver = ExpressPeerServer(server, peerServerOptions);
 
 peerserver.on('connection', function(id) {
-	console.log('connection') 
 	if (allDrawerIds.includes(parseInt(id))) {
 		drawerIdsForGodViews.push(parseInt(id))
-		console.log("drawer connected: "+id)
 	}
 })
 
