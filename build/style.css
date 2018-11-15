@@ -2,12 +2,20 @@
 	height:100%;
 	z-index: 1;
 	position: absolute;
+
+	transform: rotateY(180deg);
+	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	-moz-transform:rotateY(180deg); /* Firefox */
 }
 
 #videoOfDrawer{
 	z-index: 2;
 	position: absolute;
 	width:200px;
+
+	transform: rotateY(180deg);
+	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	-moz-transform:rotateY(180deg); /* Firefox */
 }
 
 #drawerCanvas{
@@ -64,6 +72,10 @@
 	position:absolute;
 }
 
+#selfPortraitLink{
+	color:#BBBBBB
+}
+
 .greyBackground{
 	background-color: #202020;
 }
@@ -86,11 +98,8 @@
 }
 
 .loadingText {
-	z-index: 1;
-	position: absolute;
-	margin-left: 40px;
-	margin-top: 30px;
 	color:#FFFFFF;
+	margin-left: -90px;
 }
 
 .previousPortraitsArrayCanvas{
