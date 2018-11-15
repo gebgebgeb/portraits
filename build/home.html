@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<link rel='stylesheet' type='text/css' href='style.css'>
+		<link rel='stylesheet' href='bootstrap.css'>
+	</head>
+<body>
+	<div class='container-fluid mt-5' id='interaction'>
+		<div class='row mt-3'>
+			<div class='col-4 offset-4'>
+				<div class='card'>
+					<div class='card-body'>
+						<canvas id='logo' width=640 height=250></canvas>
+						<p class='card-text text-center'>Hi! We made this app so we could practice seeing how beautiful people are. Hope you like it.</p>
+						<div class='text-center'>
+							<a href='/nextAvailablePage' class='btn btn-primary'>Draw or be drawn!</a>
+						</div>
+					</div> <!-- card-body -->
+				</div> <!-- card -->
+			</div> <!-- col -->
+		</div> <!-- row -->
+
+
+		<div class='footer'>
+			<div class='container-fluid'>
+				<div class='row mb-2'>
+					<div class='col-8 text-left'>
+						<a href='mailto:davidgeorgeportraits@gmail.com?Subject=Feedback'>Send feedback</a> 
+						to davidgeorgeportraits@gmail.com
+						| 
+						<a href='https://github.com/gebgebgeb/portraits'>Source code</a> 
+					</div>
+					<div class='col-4 text-right'>
+						<a href='/options.html'>More drawing options</a> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='row' id='videoTable'></div>
+
+	<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+	<script src='playDrawing.js'></script>
+	<script src='logo.js'></script>	
+	<script src='home.js'></script>
+	<script src='homePageBackground.js'></script>	
+</body>
+</html>

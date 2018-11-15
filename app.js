@@ -45,7 +45,7 @@ let generateId = ()=>{
 }
 
 app.get("/", (req, res) => {
-	res.redirect("/matcher.html")
+	res.redirect("/home.html")
 });
 
 app.get("/friendpairs", (req, res) => {

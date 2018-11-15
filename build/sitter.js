@@ -5,7 +5,7 @@ const loader = document.getElementById('loader')
 let urlParams = new URLSearchParams(window.location.search);
 let sitterId = urlParams.get('sitterId');
 
-let productionServer = window.location.hostname.indexOf("localhost") === -1
+let productionServer = window.location.hostname.indexOf('localhost') === -1
 
 let peer
 let portraitHistory
@@ -42,7 +42,7 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		})
 	})
 }).catch(function(err){
-	if (err === "DOMException: Requested device not found") {
+	if (err === 'DOMException: Requested device not found') {
 		alert('You need a webcam to use this app, sorry!')
 	} else {
 		alert('Sorry! Something went wrong :(')

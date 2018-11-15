@@ -2,16 +2,16 @@
 <html>
 	<head>
 		<link rel='stylesheet' type='text/css' href='style.css'>
-		<link rel="stylesheet" href='bootstrap.css'>
+		<link rel='stylesheet' href='bootstrap.css'>
 	</head>
 	<body class='greyBackground'>
 		<video autoplay playsinline id='videoOfDrawer'></video>
 		<video autoplay playsinline id='videoOfDrawerCanvas'></video>
 		<p class='loadingText'>Waiting for drawer...</p>
-		<button id='saveDrawingSitter' onclick="savePortrait()" class='btn btn-primary'>Save Drawing</button>
-		<div id="loader" class="loader centered"></div>
+		<button id='saveDrawingSitter' onclick='savePortrait()' class='btn btn-primary'>Save Drawing</button>
+		<div id='loader' class='loader centered'></div>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/peerjs/0.3.9/peer.min.js'></script>
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
 		<script src='sitter.js'></script>
 	</body>
 </html>
