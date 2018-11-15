@@ -57,7 +57,7 @@ app.get("/friendpairs", (req, res) => {
 });
 
 app.get("/previousportraits", (req, res) => {
-	Portrait.find({}).limit(200).sort('-time').exec( (err, entries) => {
+	Portrait.find({}).limit(200).sort('time').exec( (err, entries) => {
 		let previousPortraitsArray = []
 		let existingPortraitIds = []
 		for (entry of entries) {
