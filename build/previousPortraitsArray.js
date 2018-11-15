@@ -1,6 +1,6 @@
 let godVideo = document.getElementById('godVideo') 
 const videos = []
-const row = document.getElementById('videoTable')
+const row = document.getElementById('previousPortraitsTable')
 
 let productionServer = window.location.hostname.indexOf('localhost') === -1
 
@@ -15,7 +15,7 @@ const pollForPortraits = () => {
 				col.className = 'col-2'
 				backgroundPortait.width = pastPortrait.canvasWidth
 				backgroundPortait.height = pastPortrait.canvasWidth*.75 //standardize aspect ratio
-				backgroundPortait.className = 'godViewCanvas'
+				backgroundPortait.className = 'previousPortraitsArrayCanvas'
 				sessionIds.push(pastPortrait.sessionId)
 				col.appendChild(backgroundPortait)
 				row.prepend(col)

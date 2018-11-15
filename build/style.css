@@ -52,12 +52,12 @@
 	margin-top: 20px;
 }
 
-#interaction{
+#modeCard{
 	z-index:2;
 	position:absolute;
 }
 
-#videoTable{
+#previousPortraitsTable{
 	z-index:1;
 	position:absolute;
 }
@@ -91,11 +91,7 @@
 	color:#FFFFFF;
 }
 
-.btn-primary {
-	background-color:#8B4513;
-}
-
-.godViewCanvas{
+.previousPortraitsArrayCanvas{
 	width: 100%;
 }
 
@@ -107,24 +103,16 @@
     text-align: center;
 }
 
-<<<<<<< HEAD
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #009900; /* Green? */
+    border-top: 16px solid #885ead; /* Green? */
     border-radius: 50%;
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
 }
-=======
-
->>>>>>> 5ebc6405564728416882dc82e836c20262652316
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-td{
-	vertical-align:top;
 }
