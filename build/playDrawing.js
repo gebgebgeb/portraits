@@ -1,4 +1,7 @@
 const playDrawing = (canvas, mousePositionArray, mousePosIdx, speed, loopBool, loopDelay) => {
+	loopDelay = loopDelay || 500
+	loopBool = loopBool || false
+
 	let ctx = canvas.getContext('2d')
 	let lastMousePos = mousePositionArray[mousePosIdx-1]
 	let mousePos = mousePositionArray[mousePosIdx]

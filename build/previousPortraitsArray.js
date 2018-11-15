@@ -19,7 +19,7 @@ const pollForPortraits = () => {
 				sessionIds.push(pastPortrait.sessionId)
 				col.appendChild(backgroundPortait)
 				row.prepend(col)
-				playDrawing (backgroundPortait, pastPortrait.mousePositionArray, 1, 25, true,  500)
+				playDrawing (backgroundPortait, pastPortrait.mousePositionArray, 1, 20, true,  500)
 				videos.push(backgroundPortait)
 			}
 		}
