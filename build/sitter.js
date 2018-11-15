@@ -2,6 +2,8 @@ const videoOfDrawer = document.getElementById('videoOfDrawer')
 const videoOfDrawerCanvas = document.getElementById('videoOfDrawerCanvas')
 const loader = document.getElementById('loader')
 const saveButton = document.getElementById('saveDrawingSitter')
+let sitterInstructions = document.getElementById('sitterInstructions')
+
 saveButton.hidden = true
 
 let urlParams = new URLSearchParams(window.location.search);
@@ -17,6 +19,7 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		call.answer(mediaStream);
 		call.on('stream', function(stream) {
 			saveButton.hidden = false
+			sitterInstructions.hidden = true
 			if(call.metadata.type == 'webcam'){
 				videoOfDrawer.srcObject = stream
 			}
