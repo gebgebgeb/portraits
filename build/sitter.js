@@ -2,6 +2,7 @@ const videoOfDrawer = document.getElementById('videoOfDrawer')
 const videoOfDrawerCanvas = document.getElementById('videoOfDrawerCanvas')
 const loader = document.getElementById('loader')
 const saveButton = document.getElementById('saveDrawingSitter')
+const sitterTitle = document.getElementById('sitterTitle')
 let sitterInstructions = document.getElementById('sitterInstructions')
 
 saveButton.hidden = true
@@ -16,7 +17,8 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 .then(function(mediaStream) {
 	peer.on('call', function(call) {
 		// Answer the call, providing our mediaStream
-		call.answer(mediaStream);
+		call.answer(mediaStream)
+		sitterTitle.innerHTML = 'Drawing Started!'
 		call.on('stream', function(stream) {
 			saveButton.hidden = false
 			sitterInstructions.hidden = true

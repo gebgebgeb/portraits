@@ -6,7 +6,7 @@ const initializePeer = (id) => {
 	if (productionServer) {
 		peer = new Peer(id, {key:'peerjs', port:443, host:'sleepy-earth-42956.herokuapp.com', path: '/api', debug:1})
 	} else {
-		peer = new Peer(id, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:1})
+		peer = new Peer(id, {key:'peerjs', port:9000, host:'localhost', path: '/api', debug:3})
 	}
 
 	return peer
