@@ -76,6 +76,10 @@
 	color:#BBBBBB
 }
 
+#previousCanvas{
+	width:100%;
+}
+
 .greyBackground{
 	background-color: #202020;
 }
