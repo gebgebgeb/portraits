@@ -88,11 +88,11 @@ app.get("/nextAvailablePage", (req, res) => {
 	if(lastSitterId === null){
 		lastSitterId = generateId()
 		allSitterIds.push(lastSitterId)
-		res.redirect('/sitter.html?sitterId=' + lastSitterId)
+		res.send({sitterId:lastSitterId, drawerId:null})
 	}else{
 		let drawerId = generateId()
 		allDrawerIds.push(drawerId)
-		res.redirect('/drawer.html?sitterId=' + lastSitterId + '&drawerId=' + drawerId)
+		res.send({sitterId:lastSitterId, drawerId:drawerId})
 		lastSitterId = null
 	}
 })

@@ -1,5 +1,10 @@
 <html>
 	<head>
+		<!-- 	<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"> -->
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 		<link rel='stylesheet' type='text/css' href='style.css'>
 		<link rel='stylesheet' href='bootstrap.css'>
 		<title>Fun Portraits App!</title>
@@ -7,13 +12,13 @@
 <body>
 	<div class='container-fluid mt-5' id='modeCard'>
 		<div class='row mt-3'>
-			<div class='col-4 offset-4'>
+			<div class='col-xs-12 col-lg-4 offset-lg-4'>
 				<div class='card'>
 					<div class='card-body'>
 						<canvas id='logo' width=640 height=300></canvas>
 						<p class='card-text text-center'>Hi! We made this app so we could practice seeing how beautiful people are. Hope you like it.</p>
 						<div class='text-center'>
-							<a href='/nextAvailablePage' class='btn btn-primary'>Draw or be drawn!</a>
+							<a onclick='nextAvailablePage()' class='btn btn-primary'>Draw or be drawn!</a>
 						</div>
 					</div> <!-- card-body -->
 				</div> <!-- card -->
@@ -40,10 +45,11 @@
 
 	<div class='row' id='previousPortraitsTable'></div>
 
-	<script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+	<script src='axios.min.js'></script>
 	<script src='playDrawing.js'></script>
 	<script src='logo.js'></script>	
 	<script src='home.js'></script>
-	<script src='previousPortraitsArray.js'></script>	
+	<script src='previousPortraitsArray.js'></script>
+	<script src='getEnvironment.js'></script>	
 </body>
 </html>
