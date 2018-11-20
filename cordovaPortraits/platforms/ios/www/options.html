@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<link rel='stylesheet' type='text/css' href='style.css'>
+		<link rel="stylesheet" href='bootstrap.css'>
+	</head>
+<body>
+	<div class='navbar' style='border:none;'><a href='/home.html'>Back to home</a></div>
+	<div class='container-fluid mt-5' id='modeCard'>
+		<div class='row mt-3'>
+			<div class='col-4 offset-2'>
+				<div class='card'>
+					<div class="card-body">
+						<h5 class="card-title">If you would like to draw with a friend:</h5>
+						<ol>
+							<li>
+								The person who would like to be drawn should open the Sitter Link
+							</li><li>
+								The person who would like to draw should open the Drawer Link
+							</li><li>
+								The drawer may need to refresh their page if things don't seem to be working.
+							</li><li>
+								Begin drawing!
+							</li>
+						</ol>
+						<a id='sitterLink' class="btn btn-primary">Sitter Link</a>
+						<a id='drawerLink' class="btn btn-primary">Drawer Link</a>
+					</div> <!-- card-body -->
+				</div> <!-- card -->
+			</div> <!-- col -->
+			<div class='col-4'>
+				<div class='card'>
+					<div class="card-body">
+						<h5 class="card-title">If you would like to draw yourself:</h5>
+						<p class="card-text">Click this link!</p>
+						<a href="/selfPortrait.html" class="btn btn-primary">Click me!</a>
+					</div> <!-- card-body -->
+				</div> <!-- card -->
+			</div> <!-- col -->
+		</div>
+	</div>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="options.js"></script>
+</body>
