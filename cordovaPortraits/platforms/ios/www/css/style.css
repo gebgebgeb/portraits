@@ -1,0 +1,125 @@
+#videoOfSitter{
+	height:100%;
+	z-index: 1;
+	position: absolute;
+
+	transform: rotateY(180deg);
+	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	-moz-transform:rotateY(180deg); /* Firefox */
+}
+
+#videoOfDrawer{
+	z-index: 2;
+	position: absolute;
+	width:200px;
+
+	transform: rotateY(180deg);
+	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	-moz-transform:rotateY(180deg); /* Firefox */
+}
+
+#drawerCanvas{
+	/* border:1px solid #000000; */
+	height:100%;
+	z-index: 2;
+	position: absolute;
+	opacity:.5;
+}
+
+#videoOfDrawerCanvas{
+	/* border:1px solid #000000; */
+	height: 100%;
+	z-index: 1;
+	position: absolute;
+}
+
+#logo {
+	z-index:2;
+	width:100%;
+	margin-top:-50px;
+	margin-left: -10px; 
+}
+
+#saveDrawing{
+	z-index: 3;
+	position: absolute;
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
+#colorPicker{
+	z-index: 3;
+	position: absolute;
+	height:100px;
+	margin-left: 130px;
+	margin-top: 20px;
+}
+
+#saveDrawingSitter{
+	z-index: 3;
+	position: absolute;
+	margin-left: 220px;
+	margin-top: 20px;
+}
+
+#modeCard{
+	z-index:2;
+	position:absolute;
+}
+
+#previousPortraitsTable{
+	z-index:1;
+	position:absolute;
+}
+
+#selfPortraitLink{
+	color:#BBBBBB
+}
+
+#previousCanvas{
+	width:100%;
+}
+
+.greyBackground{
+	background-color: #202020;
+}
+
+.centered {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -60px;
+	margin-top: -60px;
+	z-index: 3;
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #885ead; /* Green? */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+.loadingText {
+	color:#FFFFFF;
+	margin-left: -90px;
+}
+
+.previousPortraitsArrayCanvas{
+	width: 100%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
