@@ -1,0 +1,58 @@
+{
+  "_from": "cordova-plugin-webrtc",
+  "_id": "cordova-plugin-webrtc@0.1.1",
+  "_inBundle": false,
+  "_integrity": "sha1-eGMlxeKpNzGcnISIIV4sftiTYoU=",
+  "_location": "/cordova-plugin-webrtc",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-webrtc",
+    "name": "cordova-plugin-webrtc",
+    "escapedName": "cordova-plugin-webrtc",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-webrtc/-/cordova-plugin-webrtc-0.1.1.tgz",
+  "_shasum": "786325c5e2a937319c9c8488215e2c7ed8936285",
+  "_spec": "cordova-plugin-webrtc",
+  "_where": "/Users/SHB/DDM/Engineering Files/portraits/cordovaPortraits",
+  "author": {
+    "name": "Remotium Inc."
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-webrtc",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova WebRTC Plugin",
+  "devDependencies": {
+    "bower": "^1.3.7",
+    "gulp": "^3.8.8",
+    "gulp-load-plugins": "^0.6.0",
+    "gulp-webpack": "^0.3.0",
+    "jshint-stylish": "^0.4.0",
+    "mkdirp": "^0.5.1",
+    "webpack": "^1.4.0-beta6",
+    "webpack-dev-server": "^1.6.4"
+  },
+  "keywords": [
+    "cordova",
+    "webrtc",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "license": "Apache",
+  "main": "gulpfile.js",
+  "name": "cordova-plugin-webrtc",
+  "version": "0.1.1"
+}

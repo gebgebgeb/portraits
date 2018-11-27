@@ -13,13 +13,13 @@ const nextAvailablePage = () => {
 	axios.get(getEnvironment()+'/nextAvailablePage').then((response)=>{
 		alert(response.data.drawerId)
 		if (response.data.drawerId) {
-			let drawerURL = '/drawer.html?sitterId='+response.data.sitterId+'&drawerId='+response.data.drawerId
+			let drawerURL = 'drawer.html?sitterId='+response.data.sitterId+'&drawerId='+response.data.drawerId
 			alert(drawerURL)
-			window.open(drawerURL)
+			window.location.href = drawerURL
 		} else {
-			let sitterURL = '/sitter.html?sitterId='+response.data.sitterId
+			let sitterURL = 'sitter.html?sitterId='+response.data.sitterId
 			alert(sitterURL)
-			window.open(sitterURL)
+			window.location.href = sitterURL
 		}
 	})
 }

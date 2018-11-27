@@ -14,5 +14,13 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-webrtc": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-webrtc"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

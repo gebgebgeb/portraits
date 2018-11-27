@@ -23,12 +23,25 @@
     },
     "cordova-plugin-console": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-webrtc": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {},
-  "modules": [],
+  "modules": [
+    {
+      "id": "cordova-plugin-webrtc.WebRTC",
+      "file": "plugins/cordova-plugin-webrtc/dist/webrtc.js",
+      "pluginId": "cordova-plugin-webrtc",
+      "clobbers": [
+        "webrtc"
+      ]
+    }
+  ],
   "plugin_metadata": {
     "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-console": "1.1.0"
+    "cordova-plugin-console": "1.1.0",
+    "cordova-plugin-webrtc": "0.1.1"
   }
 }
