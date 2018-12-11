@@ -63,6 +63,25 @@ class DrawingListener{
 		evt.preventDefault()
 	}
 
+	touchMoveListener(evt){
+		if (this.mouseDown) {
+			let touch = evt.touch[0]
+			const mousePos = this.getAndStoreMousePos(touch, false)
+			const ctx = this.c.getContext('2d')
+			ctx.beginPath()
+			ctx.moveTo(this.lastMousePos.x, this.lastMousePos.y)
+			ctx.lineTo(mousePos.x, mousePos.y)
+			ctx.lineWidth = 1
+
+			ctx.strokeStyle = this.currentStrokeColor
+			ctx.stroke()
+
+			this.lastMousePos = mousePos
+		}
+		evt.preventDefault()
+	}
+
+
 	setStrokeColor(jscolor){
 		this.currentStrokeColor = '#' + jscolor
 	}
