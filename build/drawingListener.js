@@ -26,7 +26,7 @@ class DrawingListener{
 			x: (evt.clientX - rect.left)/this.scaleFactor
 			, y: (evt.clientY-rect.top)/this.scaleFactor
 			, mouseUp: mouseUpBool
-			, color: this.currentStrokeColor 
+			, color: this.currentStrokeColor
 		})
 		return {
 			x: (evt.clientX - rect.left) / this.scaleFactor
@@ -35,16 +35,19 @@ class DrawingListener{
 	}
 
 	mouseDownListener(evt){
+		evt.preventDefault()
 		this.mouseDown = true
 		this.lastMousePos = this.getAndStoreMousePos(evt, false)
 	}
 
 	mouseUpListener(evt){
-		this.mouseDown = false  
+		evt.preventDefault()
+		this.mouseDown = false
 		this.getAndStoreMousePos(evt, true)
 	}
 
 	mouseMoveListener(evt){
+		evt.preventDefault()
 		if (this.mouseDown) {
 			const mousePos = this.getAndStoreMousePos(evt, false)
 			const ctx = this.c.getContext('2d')
