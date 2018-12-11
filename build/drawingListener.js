@@ -35,19 +35,18 @@ class DrawingListener{
 	}
 
 	mouseDownListener(evt){
-		evt.preventDefault()
 		this.mouseDown = true
 		this.lastMousePos = this.getAndStoreMousePos(evt, false)
+		evt.preventDefault()
 	}
 
 	mouseUpListener(evt){
-		evt.preventDefault()
 		this.mouseDown = false
 		this.getAndStoreMousePos(evt, true)
+		evt.preventDefault()
 	}
 
 	mouseMoveListener(evt){
-		evt.preventDefault()
 		if (this.mouseDown) {
 			const mousePos = this.getAndStoreMousePos(evt, false)
 			const ctx = this.c.getContext('2d')
@@ -61,6 +60,7 @@ class DrawingListener{
 
 			this.lastMousePos = mousePos
 		}
+		evt.preventDefault()
 	}
 
 	setStrokeColor(jscolor){
