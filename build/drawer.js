@@ -33,6 +33,8 @@ navigator.mediaDevices.getUserMedia({video:true, audio:false})
 		call.answer(canvasStream);
 	})
 	conn = peer.connect(sitterId)
+	console.log('conn')
+	console.log(conn)
 }).catch(function(err){
 	if (err === 'DOMException: Requested device not found') {
 		alert('You need a webcam to use this app, sorry!')

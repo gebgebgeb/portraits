@@ -39,6 +39,9 @@ document.body.onresize = () => {
 c.addEventListener('mousedown', drawingListener.mouseDownListener)
 c.addEventListener('mouseup', drawingListener.mouseUpListener)
 c.addEventListener('mousemove', drawingListener.mouseMoveListener)
+c.addEventListener('touchstart', drawingListener.mouseDownListener)
+c.addEventListener('touchmove', drawingListener.mouseMoveListener)
+c.addEventListener('touchend', drawingListener.mouseUpListener)
 
 const savePortrait = () => {
 	if(drawingListener.portraitHistory.mousePositionArray.length > 20){
@@ -53,4 +56,3 @@ const savePortrait = () => {
 const update = (jscolor) => {
     drawingListener.setStrokeColor(jscolor)
 }
-
